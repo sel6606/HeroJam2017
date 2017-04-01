@@ -48,11 +48,15 @@ public class Checker : MonoBehaviour
     #endregion
 
     //sets enum color of checker
+<<<<<<< HEAD
+    public cColor checkerColor;
+=======
 
     #region
     cColor currentColor;
     
     private cColor checkerColor;
+>>>>>>> 539422c24fbb8444d8ce71e614a62aacbe2bf3e6
 
     public cColor CheckerColor
     {
@@ -108,6 +112,8 @@ public class Checker : MonoBehaviour
 
     void Start()
     {
+
+        //checkerManager.GetComponent<CheckerManager>();
 
     }
 
