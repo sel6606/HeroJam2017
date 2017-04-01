@@ -11,6 +11,23 @@ public class Checker : MonoBehaviour
     //Whether or not it is flipped
     //Index in the 2D array
 
+    //move and jump bools that check previous move
+
+    public bool moveUpL;
+    public bool moveUpR;
+    public bool moveDnL;
+    public bool moveDnr;
+
+    public bool jumpUpL;
+    public bool jumpUpR;
+    public bool jumpDnL;
+    public bool jumpDnr;
+
+    public bool prevMoveMove;
+
+    public GameObject checkerManager;
+
+    //returns current Checker Position in 3D space
     private Vector3 positionChecker;
 
     public Vector3 PositionChecker
@@ -22,6 +39,7 @@ public class Checker : MonoBehaviour
 
     }
 
+    //sets enum color of checker
     private cColor checkerColor;
 
     public cColor CheckerColor
@@ -33,6 +51,7 @@ public class Checker : MonoBehaviour
 
     }
 
+    //reutnrs true if flipped over, false if unrevieled
     private bool flipped;
 
     public bool Flipped
@@ -44,6 +63,7 @@ public class Checker : MonoBehaviour
 
     }
 
+    //returns and sets index X in array
     private int indX;
 
     public int indexX
@@ -55,6 +75,7 @@ public class Checker : MonoBehaviour
 
     }
 
+    //returns and sets index Y in array
     private int indY;
 
     public int indexY
@@ -69,7 +90,10 @@ public class Checker : MonoBehaviour
     void Start()
     {
 
+        checkerManager.GetComponent<CheckerManager>();
+
     }
+
     //Creates a checker
     void Create(cColor color, int posX, int posY, bool upFace)
     {
@@ -91,17 +115,35 @@ public class Checker : MonoBehaviour
 
     }
 
-    void Move()
+    void Move(int newX, int newY, Vector3 newPosition)
     {
 
+        this.indexX = newX;
 
+        this.indexY = newY;
+
+        this.PositionChecker = newPosition;
+
+        checkerManager.GetComponent<CheckerManager>().EditArray(this.indexX, this.indexY, newX, newY);
+
+        prevMoveMove = false;
 
     }
 
-    void Jump()
+    void Jump(int newX, int newY, Vector3 newPosition)
     {
 
+        Move(newX, newY, newPosition);
 
+        prevMoveMove = false;
 
     }
+
+    void Flip()
+    {
+
+        Flipped = true;
+
+    }
+
 }
