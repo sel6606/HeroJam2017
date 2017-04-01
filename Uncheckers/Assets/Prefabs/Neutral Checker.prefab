@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33535639548818084}
   - component: {fileID: 23105721849269292}
   - component: {fileID: 95916714979433124}
+  - component: {fileID: 114016406729228492}
   m_Layer: 0
   m_Name: Neutral Checker
   m_TagString: Untagged
@@ -97,3 +98,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114016406729228492
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1724180215881450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c5a8db74877804d819d3e0b8362c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selected: 0
+  moveUpL: 0
+  moveUpR: 0
+  moveDnL: 0
+  moveDnr: 0
+  jumpUpL: 0
+  jumpUpR: 0
+  jumpDnL: 0
+  jumpDnr: 0
+  prevMoveMove: 0
+  moveOver: 0
+  checkerManager: {fileID: 0}
