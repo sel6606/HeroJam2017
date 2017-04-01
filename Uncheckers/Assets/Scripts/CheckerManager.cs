@@ -36,10 +36,6 @@ public class CheckerManager : MonoBehaviour {
 		
 	}
 
-    bool IsLegal(Checker c)
-    {
-        return true;
-    }
 
     ///<summary>
     /// Accesses and edits the array for a checker objects
