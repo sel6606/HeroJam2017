@@ -47,12 +47,12 @@ public class Checker : MonoBehaviour
     }
     #endregion
 
-    //sets enum color of checker
-   
+
     #region
     cColor currentColor;
     
     private cColor checkerColor;
+
 
     public cColor CheckerColor
     {
