@@ -25,8 +25,6 @@ public class CheckerManager : MonoBehaviour {
         redLeft = 12;
 
         blackLeft = 12;
-
-        InitArray();
 	}
 	
 	// Update is called once per frame
@@ -83,12 +81,12 @@ public class CheckerManager : MonoBehaviour {
     public void Restart()
     {
 
-        for(int i = 0; i < 7; i++)
+        for(int i = 0; i < 8; i++)
         {
 
-            for (int j = 0; j < 7; j++)
+            for (int j = 0; j < 8; j++)
             {
-
+                Destroy(checkBoard[i, j]);
                 checkBoard[i, j] = null;
 
             }

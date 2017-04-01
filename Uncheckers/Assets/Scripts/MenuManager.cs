@@ -35,7 +35,7 @@ public class MenuManager : MonoBehaviour {
     /// </summary>
     public void RestartButton()
     {
-        checkerMan.GetComponent<CheckerManager>().InitArray();
+        checkerMan.GetComponent<CheckerManager>().Restart();
         gameMan.GetComponent<GameManager>().gameOver = false;
         gameMan.GetComponent<GameManager>().menu.SetActive(false);
         gameMan.GetComponent<GameManager>().Setup();
