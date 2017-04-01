@@ -110,6 +110,9 @@ public class CheckerManager : MonoBehaviour {
     /// </summary>
     public void InitArray()
     {
+        //Float for how far they need to move
+        float offset = checkPre.GetComponent<Renderer>().bounds.size.x + (checkPre.GetComponent<Renderer>().bounds.extents.x / 3);
+
         int redNum = 12;
 
         int blackNum = 12;
@@ -121,7 +124,7 @@ public class CheckerManager : MonoBehaviour {
         bool stagger = false;
 
         //Checks if there are still available red or black peices as it places them, fills the board with checkers
-        for(int j = 0; j < 8; j++)
+        for (int j = 0; j < 8; j++)
         {
             if (j == 3 || j == 4)
             {
@@ -138,7 +141,7 @@ public class CheckerManager : MonoBehaviour {
 
                     if (check == 1 && redNum > 0)
                     {
-                        GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.transform.position.x + checkPre.transform.localScale.x * j, basePos.transform.position.y, basePos.transform.position.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+                        GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.transform.position.x + offset * j, basePos.transform.position.y, basePos.transform.position.z + offset * i), checkPre.transform.rotation);
 
                         nuCheck.GetComponent<Checker>().checkerManager = gameObject;
 
@@ -150,7 +153,7 @@ public class CheckerManager : MonoBehaviour {
                     }
                     else if (check == 2 && blackNum > 0)
                     {
-                        GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.transform.position.x + checkPre.transform.localScale.x * j, basePos.transform.position.y, basePos.transform.position.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+                        GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.transform.position.x + offset * j, basePos.transform.position.y, basePos.transform.position.z + offset * i), checkPre.transform.rotation);
 
                         nuCheck.GetComponent<Checker>().checkerManager = gameObject;
 
@@ -166,7 +169,7 @@ public class CheckerManager : MonoBehaviour {
                     }
                     else if (redNum == 0 && blackNum > 0)
                     {
-                        GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.transform.position.x + checkPre.transform.localScale.x * j, basePos.transform.position.y, basePos.transform.position.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+                        GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.transform.position.x + offset * j, basePos.transform.position.y, basePos.transform.position.z + offset * i), checkPre.transform.rotation);
 
                         nuCheck.GetComponent<Checker>().checkerManager = gameObject;
 
@@ -178,7 +181,7 @@ public class CheckerManager : MonoBehaviour {
                     }
                     else if (redNum > 0 && blackNum == 0)
                     {
-                        GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.transform.position.x + checkPre.transform.localScale.x * j, basePos.transform.position.y, basePos.transform.position.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+                        GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.transform.position.x + offset * j, basePos.transform.position.y, basePos.transform.position.z + offset * i), checkPre.transform.rotation);
 
                         nuCheck.GetComponent<Checker>().checkerManager = gameObject;
 
@@ -200,7 +203,7 @@ public class CheckerManager : MonoBehaviour {
 
                     if (check == 1 && redNum > 0)
                     {
-                        GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.transform.position.x + checkPre.transform.localScale.x * j, basePos.transform.position.y, basePos.transform.position.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+                        GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.transform.position.x + offset * j, basePos.transform.position.y, basePos.transform.position.z + offset * i), checkPre.transform.rotation);
 
                         nuCheck.GetComponent<Checker>().checkerManager = gameObject;
 
@@ -212,7 +215,7 @@ public class CheckerManager : MonoBehaviour {
                     }
                     else if (check == 2 && blackNum > 0)
                     {
-                        GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.transform.position.x + checkPre.transform.localScale.x * j, basePos.transform.position.y, basePos.transform.position.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+                        GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.transform.position.x + offset * j, basePos.transform.position.y, basePos.transform.position.z + offset * i), checkPre.transform.rotation);
 
                         nuCheck.GetComponent<Checker>().checkerManager = gameObject;
 
@@ -228,7 +231,7 @@ public class CheckerManager : MonoBehaviour {
                     }
                     else if (redNum == 0 && blackNum > 0)
                     {
-                        GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.transform.position.x + checkPre.transform.localScale.x * j, basePos.transform.position.y, basePos.transform.position.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+                        GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.transform.position.x + offset * j, basePos.transform.position.y, basePos.transform.position.z + offset * i), checkPre.transform.rotation);
 
                         nuCheck.GetComponent<Checker>().checkerManager = gameObject;
 
@@ -240,7 +243,7 @@ public class CheckerManager : MonoBehaviour {
                     }
                     else if (redNum > 0 && blackNum == 0)
                     {
-                        GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.transform.position.x + checkPre.transform.localScale.x * j, basePos.transform.position.y, basePos.transform.position.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+                        GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.transform.position.x + offset * j, basePos.transform.position.y, basePos.transform.position.z + offset * i), checkPre.transform.rotation);
 
                         nuCheck.GetComponent<Checker>().checkerManager = gameObject;
 
@@ -254,7 +257,7 @@ public class CheckerManager : MonoBehaviour {
                 }
             }
         }
-       
+
     }
 
     /// <summary>
