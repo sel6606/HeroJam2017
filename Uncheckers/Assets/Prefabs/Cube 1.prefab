@@ -9,50 +9,46 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1824163376821964}
+  m_RootGameObject: {fileID: 1411234964128078}
   m_IsPrefabParent: 1
---- !u!1 &1824163376821964
+--- !u!1 &1411234964128078
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4680157358151286}
-  - component: {fileID: 33321605717323666}
-  - component: {fileID: 23124400013736966}
-  - component: {fileID: 95240574980414952}
+  - component: {fileID: 4397636911044212}
+  - component: {fileID: 33005356018822356}
+  - component: {fileID: 65642369701979174}
+  - component: {fileID: 23262853363671282}
+  - component: {fileID: 114067309842135994}
   m_Layer: 0
-  m_Name: Checker Board
+  m_Name: Cube 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4680157358151286
+--- !u!4 &4397636911044212
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1824163376821964}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-<<<<<<< HEAD
-  m_LocalPosition: {x: -6.2276397, y: -5.692493, z: -10.766885}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-=======
-  m_LocalPosition: {x: 1.19, y: 7.2684, z: 6.1847825}
-  m_LocalScale: {x: 477.3345, y: 9.546691, z: 477.33453}
->>>>>>> b2b7fe7f1e8470091cbf695e6fca1c2fd70e1551
+  m_GameObject: {fileID: 1411234964128078}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.91894233, y: 7.56, z: 4.106}
+  m_LocalScale: {x: 0.6057092, y: 0.6171458, z: 0.6171458}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23124400013736966
+--- !u!23 &23262853363671282
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1824163376821964}
+  m_GameObject: {fileID: 1411234964128078}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -60,7 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ece005283e011d244b6a4d43580a4be9, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -68,7 +64,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
+  m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_SelectedEditorRenderState: 3
@@ -78,27 +74,44 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &33321605717323666
+--- !u!33 &33005356018822356
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1824163376821964}
-  m_Mesh: {fileID: 4300000, guid: d841777a6381ac44788f427a22ff30b9, type: 3}
---- !u!95 &95240574980414952
-Animator:
-  serializedVersion: 3
+  m_GameObject: {fileID: 1411234964128078}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65642369701979174
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1824163376821964}
+  m_GameObject: {fileID: 1411234964128078}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: d841777a6381ac44788f427a22ff30b9, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114067309842135994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1411234964128078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c5a8db74877804d819d3e0b8362c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveUpL: 0
+  moveUpR: 0
+  moveDnL: 0
+  moveDnr: 0
+  jumpUpL: 0
+  jumpUpR: 0
+  jumpDnL: 0
+  jumpDnr: 0
+  prevMoveMove: 0
+  checkerManager: {fileID: 0}
+  checkerColor: 0

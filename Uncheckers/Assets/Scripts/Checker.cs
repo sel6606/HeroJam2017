@@ -11,6 +11,30 @@ public class Checker : MonoBehaviour
     //Whether or not it is flipped
     //Index in the 2D array
 
+    //move and jump bools that check previous move
+
+    #region
+    public bool moveUpL;
+    public bool moveUpR;
+    public bool moveDnL;
+    public bool moveDnr;
+
+    public bool jumpUpL;
+    public bool jumpUpR;
+    public bool jumpDnL;
+    public bool jumpDnr;
+    #endregion
+
+    //move bools
+    #region
+    public bool prevMoveMove;
+    public bool moveOver;
+    #endregion
+
+    public GameObject checkerManager;
+
+    //returns current Checker Position in 3D space
+    #region
     private Vector3 positionChecker;
 
     public Vector3 PositionChecker
@@ -21,8 +45,22 @@ public class Checker : MonoBehaviour
         set { positionChecker = value; }
 
     }
+    #endregion
 
+<<<<<<< HEAD
+    //sets enum color of checker
+=======
+>>>>>>> ea04cc985141c9a94dc243309b389c275e2552bf
+
+   
+    #region
+    cColor currentColor;
+    
     private cColor checkerColor;
+<<<<<<< HEAD
+
+=======
+>>>>>>> ea04cc985141c9a94dc243309b389c275e2552bf
 
     public cColor CheckerColor
     {
@@ -32,7 +70,10 @@ public class Checker : MonoBehaviour
         set { checkerColor = value; }
 
     }
+    #endregion
 
+    //reutnrs true if flipped over, false if unrevieled
+    #region
     private bool flipped;
 
     public bool Flipped
@@ -43,7 +84,10 @@ public class Checker : MonoBehaviour
         set { flipped = value; }
 
     }
+    #endregion
 
+    //returns and sets index X in array
+    #region
     private int indX;
 
     public int indexX
@@ -54,7 +98,10 @@ public class Checker : MonoBehaviour
         set { indX = value; }
 
     }
+    #endregion
 
+    //returns and sets index Y in array
+    #region
     private int indY;
 
     public int indexY
@@ -65,11 +112,15 @@ public class Checker : MonoBehaviour
         set { indY = value; }
 
     }
+    #endregion
 
     void Start()
     {
 
+        //checkerManager.GetComponent<CheckerManager>();
+
     }
+
     //Creates a checker
     void Create(cColor color, int posX, int posY, bool upFace)
     {
@@ -81,6 +132,8 @@ public class Checker : MonoBehaviour
 
         Flipped = upFace;
 
+        currentColor = cColor.Unknown;
+
     }
 
     // Update is called once per frame
@@ -91,17 +144,39 @@ public class Checker : MonoBehaviour
 
     }
 
-    void Move()
+    void Move(int newX, int newY, Vector3 newPosition)
     {
 
+        //changes x and y positions of the checker in the array
+        this.indexX = newX;
 
+        this.indexY = newY;
+
+        //updates checker position in 3d space
+        this.PositionChecker = newPosition;
+
+        //updates the checker position int the array
+        checkerManager.GetComponent<CheckerManager>().EditArray(this.indexX, this.indexY, newX, newY);
+
+        //declares turn over
+        moveOver = true;
 
     }
 
-    void Jump()
+    void Jump(int newX, int newY, Vector3 newPosition)
     {
 
-
+        //calls move
+        Move(newX, newY, newPosition);
 
     }
+
+    void Flip()
+    {
+
+        //sets flipped to true
+        Flipped = true;
+
+    }
+
 }

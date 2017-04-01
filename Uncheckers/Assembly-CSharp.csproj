@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\Checker.cs" />
      <Compile Include="Assets\Scripts\CheckerManager.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\MenuManager.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
