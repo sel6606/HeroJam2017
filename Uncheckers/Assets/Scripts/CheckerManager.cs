@@ -17,7 +17,7 @@ public class CheckerManager : MonoBehaviour {
     public GameObject checkPre;
 
     //position for lowes left corner
-    private Vector3 basePos;
+    public Vector3 basePos;
 
 	// Use this for initialization
 	void Start ()
@@ -47,23 +47,36 @@ public class CheckerManager : MonoBehaviour {
     {
 
         //stores checker
-        //int tempHold = checkBoard[oldIndexX, oldIndexY];
+        GameObject tempHold = checkBoard[oldIndexX, oldIndexY];
 
         //moves checker to new position
-        //checkBoard[newIndexX, newIndexY] = tempHold;
+        checkBoard[newIndexX, newIndexY] = tempHold;
 
         //removes old checker
-        //checkBoard[oldIndexX, oldIndexY] = 0;
+        checkBoard[oldIndexX, oldIndexY] = null;
 
     }
 
     ///<summary>
     /// Removes a checker from the array
     ///</summary>
-    public void removeChecker(int indexX, int indexY)
+    public void removeChecker(GameObject ob)
     {
+        Checker check = ob.GetComponent<Checker>();
 
-        //checkBoard[indexX, indexY] = 0;
+        checkBoard[check.indexX, check.indexY] = null;
+
+        if(check.CheckerColor == cColor.Black)
+        {
+            blackLeft--;
+        }
+        if(check.CheckerColor == cColor.Red)
+        {
+            redLeft--;
+        }
+
+        Destroy(ob);
+        
 
     }
 
@@ -114,36 +127,68 @@ public class CheckerManager : MonoBehaviour {
 
         int blackNum = 12;
 
-        
+        redLeft = 12;
+
+        blackLeft = 12;
+
+
         //Checks if there are still available red or black peices as it places them, fills the board with checkers
-        for(int i = 1; i < 8; i = i+2)
+        for (int i = 1; i < 8; i = i+2)
         {
 
-            int check = Random.Range(1, 2);
-
-            GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x * 1, basePos.y, basePos.z * i), transform.rotation);
-
-            nuCheck.AddComponent<Checker>();
+            int check = Random.Range(1, 3);
 
             if (check == 1 && redNum > 0)
             {
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
                 nuCheck.GetComponent<Checker>().CheckerColor = cColor.Red;
 
                 checkBoard[0, i] = nuCheck;
+
+                redNum--;
             }
             else if(check == 2 && blackNum > 0)
             {
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
                 nuCheck.GetComponent<Checker>().CheckerColor = cColor.Black;
 
                 checkBoard[0, i] = nuCheck;
+
+                blackNum--;
             }
             else if(redNum == 0 && blackNum == 0)
             {
                 return;
             }
-            else
+            else if(redNum == 0 && blackNum > 0)
             {
-                i = i - 2;
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
+                nuCheck.GetComponent<Checker>().CheckerColor = cColor.Black;
+
+                checkBoard[0, i] = nuCheck;
+
+                blackNum--;
+            }
+            else if(redNum > 0 && blackNum == 0)
+            {
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
+                nuCheck.GetComponent<Checker>().CheckerColor = cColor.Red;
+
+                checkBoard[0, i] = nuCheck;
+
+                redNum--;
             }
 
             
@@ -151,31 +196,59 @@ public class CheckerManager : MonoBehaviour {
         for (int i = 0; i < 8; i = i + 2)
         {
 
-            int check = Random.Range(1, 2);
-
-            GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x * 1, basePos.y, basePos.z * i), transform.rotation);
-
-            nuCheck.AddComponent<Checker>();
-
+            int check = Random.Range(1, 3);
+            
             if (check == 1 && redNum > 0)
             {
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x + checkPre.transform.localScale.x, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
                 nuCheck.GetComponent<Checker>().CheckerColor = cColor.Red;
 
                 checkBoard[1, i] = nuCheck;
+
+                redNum--;
             }
             else if (check == 2 && blackNum > 0)
             {
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x + checkPre.transform.localScale.x, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
                 nuCheck.GetComponent<Checker>().CheckerColor = cColor.Black;
 
                 checkBoard[1, i] = nuCheck;
+
+                blackNum--;
             }
             else if (redNum == 0 && blackNum == 0)
             {
                 return;
             }
-            else
+            else if (redNum == 0 && blackNum > 0)
             {
-                i = i - 2;
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x + checkPre.transform.localScale.x, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
+                nuCheck.GetComponent<Checker>().CheckerColor = cColor.Black;
+
+                checkBoard[1, i] = nuCheck;
+
+                blackNum--;
+            }
+            else if (redNum > 0 && blackNum == 0)
+            {
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x + checkPre.transform.localScale.x, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
+                nuCheck.GetComponent<Checker>().CheckerColor = cColor.Red;
+
+                checkBoard[1, i] = nuCheck;
+
+                redNum--;
             }
 
 
@@ -183,61 +256,117 @@ public class CheckerManager : MonoBehaviour {
         for (int i = 1; i < 8; i = i + 2)
         {
 
-            int check = Random.Range(1, 2);
-
-            GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x * 1, basePos.y, basePos.z * i), transform.rotation);
-
-            nuCheck.AddComponent<Checker>();
+            int check = Random.Range(1, 3);
 
             if (check == 1 && redNum > 0)
             {
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x + checkPre.transform.localScale.x * 2, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
                 nuCheck.GetComponent<Checker>().CheckerColor = cColor.Red;
 
                 checkBoard[2, i] = nuCheck;
+
+                redNum--;
             }
             else if (check == 2 && blackNum > 0)
             {
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x + checkPre.transform.localScale.x * 2, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
                 nuCheck.GetComponent<Checker>().CheckerColor = cColor.Black;
 
                 checkBoard[2, i] = nuCheck;
+
+                blackNum--;
             }
             else if (redNum == 0 && blackNum == 0)
             {
                 return;
             }
-            else
+            else if (redNum == 0 && blackNum > 0)
             {
-                i = i - 2;
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x + checkPre.transform.localScale.x * 2, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
+                nuCheck.GetComponent<Checker>().CheckerColor = cColor.Black;
+
+                checkBoard[2, i] = nuCheck;
+
+                blackNum--;
+            }
+            else if (redNum > 0 && blackNum == 0)
+            {
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x + checkPre.transform.localScale.x * 2, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
+                nuCheck.GetComponent<Checker>().CheckerColor = cColor.Red;
+
+                checkBoard[2, i] = nuCheck;
+
+                redNum--;
             }
         }
         for (int i = 1; i < 8; i = i + 2)
         {
 
-            int check = Random.Range(1, 2);
-
-            GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x * 1, basePos.y, basePos.z * i), transform.rotation);
-
-            nuCheck.AddComponent<Checker>();
-
+            int check = Random.Range(1, 3);
+            
             if (check == 1 && redNum > 0)
             {
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x + checkPre.transform.localScale.x * 7, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
                 nuCheck.GetComponent<Checker>().CheckerColor = cColor.Red;
 
                 checkBoard[7, i] = nuCheck;
+
+                redNum--;
             }
             else if (check == 2 && blackNum > 0)
             {
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x + checkPre.transform.localScale.x * 7, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
                 nuCheck.GetComponent<Checker>().CheckerColor = cColor.Black;
 
                 checkBoard[7, i] = nuCheck;
+
+                blackNum--;
             }
             else if (redNum == 0 && blackNum == 0)
             {
                 return;
             }
-            else
+            else if (redNum == 0 && blackNum > 0)
             {
-                i = i - 2;
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x + checkPre.transform.localScale.x * 7, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
+                nuCheck.GetComponent<Checker>().CheckerColor = cColor.Black;
+
+                checkBoard[7, i] = nuCheck;
+
+                blackNum--;
+            }
+            else if (redNum > 0 && blackNum == 0)
+            {
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x + checkPre.transform.localScale.x * 7, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
+                nuCheck.GetComponent<Checker>().CheckerColor = cColor.Red;
+
+                checkBoard[7, i] = nuCheck;
+
+                redNum--;
             }
 
 
@@ -245,31 +374,59 @@ public class CheckerManager : MonoBehaviour {
         for (int i = 0; i < 8; i = i + 2)
         {
 
-            int check = Random.Range(1, 2);
-
-            GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x * 1, basePos.y, basePos.z * i), transform.rotation);
-
-            nuCheck.AddComponent<Checker>();
-
+            int check = Random.Range(1, 3);
+            
             if (check == 1 && redNum > 0)
             {
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x + checkPre.transform.localScale.x * 6, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
                 nuCheck.GetComponent<Checker>().CheckerColor = cColor.Red;
 
                 checkBoard[6, i] = nuCheck;
+
+                redNum--;
             }
             else if (check == 2 && blackNum > 0)
             {
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x + checkPre.transform.localScale.x * 6, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
                 nuCheck.GetComponent<Checker>().CheckerColor = cColor.Black;
 
                 checkBoard[6, i] = nuCheck;
+
+                blackNum--;
             }
             else if (redNum == 0 && blackNum == 0)
             {
                 return;
             }
-            else
+            else if (redNum == 0 && blackNum > 0)
             {
-                i = i - 2;
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x + checkPre.transform.localScale.x * 6, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
+                nuCheck.GetComponent<Checker>().CheckerColor = cColor.Black;
+
+                checkBoard[6, i] = nuCheck;
+
+                blackNum--;
+            }
+            else if (redNum > 0 && blackNum == 0)
+            {
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x + checkPre.transform.localScale.x * 6, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
+                nuCheck.GetComponent<Checker>().CheckerColor = cColor.Red;
+
+                checkBoard[6, i] = nuCheck;
+
+                redNum--;
             }
 
 
@@ -277,31 +434,59 @@ public class CheckerManager : MonoBehaviour {
         for (int i = 1; i < 8; i = i + 2)
         {
 
-            int check = Random.Range(1, 2);
-
-            GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x * 1, basePos.y, basePos.z * i), transform.rotation);
-
-            nuCheck.AddComponent<Checker>();
-
+            int check = Random.Range(1, 3);
+            
             if (check == 1 && redNum > 0)
             {
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x + checkPre.transform.localScale.x * 5, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
                 nuCheck.GetComponent<Checker>().CheckerColor = cColor.Red;
 
                 checkBoard[5, i] = nuCheck;
+
+                redNum--;
             }
             else if (check == 2 && blackNum > 0)
             {
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x + checkPre.transform.localScale.x * 5, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
                 nuCheck.GetComponent<Checker>().CheckerColor = cColor.Black;
 
                 checkBoard[5, i] = nuCheck;
+
+                blackNum--;
             }
             else if (redNum == 0 && blackNum == 0)
             {
                 return;
             }
-            else
+            else if (redNum == 0 && blackNum > 0)
             {
-                i = i - 2;
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x + checkPre.transform.localScale.x * 5, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
+                nuCheck.GetComponent<Checker>().CheckerColor = cColor.Black;
+
+                checkBoard[5, i] = nuCheck;
+
+                blackNum--;
+            }
+            else if (redNum > 0 && blackNum == 0)
+            {
+                GameObject nuCheck = Instantiate(checkPre, new Vector3(basePos.x + checkPre.transform.localScale.x * 5, basePos.y, basePos.z + checkPre.transform.localScale.z * i), checkPre.transform.rotation);
+
+                nuCheck.GetComponent<Checker>().checkerManager = gameObject;
+
+                nuCheck.GetComponent<Checker>().CheckerColor = cColor.Red;
+
+                checkBoard[5, i] = nuCheck;
+
+                redNum--;
             }
 
 
