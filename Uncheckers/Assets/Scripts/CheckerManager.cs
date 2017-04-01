@@ -20,7 +20,7 @@ public class CheckerManager : MonoBehaviour {
 
         blackLeft = 12;
 
-        initArray();
+        InitArray();
 	}
 	
 	// Update is called once per frame
@@ -37,7 +37,7 @@ public class CheckerManager : MonoBehaviour {
     /// <summary>
     /// Sets up the board, 0 is empty space, 1 is red checker, 2 is black checker
     /// </summary>
-    void initArray()
+    public void InitArray()
     {
         int redNum = 12;
 
