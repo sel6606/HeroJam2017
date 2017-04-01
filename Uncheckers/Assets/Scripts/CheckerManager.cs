@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CheckerManager : MonoBehaviour {
 
@@ -33,10 +34,6 @@ public class CheckerManager : MonoBehaviour {
 		
 	}
 
-    bool IsLegal(Checker c)
-    {
-        return true;
-    }
 
     ///<summary>
     /// Accesses and edits the array for a checker objects
@@ -95,24 +92,16 @@ public class CheckerManager : MonoBehaviour {
 
     }
 
-    public Checker ReturnChecker()
+    //called when checker is clicked
+
+    public GameObject ReturnChecker(PointerEventData data)
     {
 
-        Checker clicked;
+        GameObject checkerClick = data.selectedObject;
 
-        foreach(Checker check in checkBoard)
-        {
+        GameObject checkerSlected = checkBoard[checkerClick.GetComponent<Checker>().indexX, checkerClick.GetComponent<Checker>().indexY];
 
-            if (Input.GetButtonDown("Fire1"))
-            {
-
-
-
-            }
-
-        }       
-
-        return clicked;
+        return checkerSlected;
 
     }
 

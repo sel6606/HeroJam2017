@@ -13,6 +13,8 @@ public class Checker : MonoBehaviour
 
     //move and jump bools that check previous move
 
+    public bool selected;
+
     #region
     public bool moveUpL;
     public bool moveUpR;
