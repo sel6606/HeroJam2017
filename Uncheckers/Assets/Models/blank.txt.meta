@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< .merge_file_a05796
 guid: f7186b0abd730f244bb56645ac2a318f
 timeCreated: 1491008782
+=======
+guid: 553e23773e1230949948d9fdea51e940
+timeCreated: 1491009293
+>>>>>>> .merge_file_a03776
 licenseType: Pro
 TextScriptImporter:
   userData: 
