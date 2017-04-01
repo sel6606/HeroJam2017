@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /// <summary>
 /// Class that contains methods that handle menu behaviors
@@ -32,17 +32,6 @@ public class MenuManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// Start the Game
-    /// </summary>
-    public void StartButton()
-    {
-
-        //loads scene // change to correct scene
-        SceneManager.LoadScene("main");
-
-    }
-
-    /// <summary>
     /// Restarts the game
     /// </summary>
     public void RestartButton()
@@ -59,5 +48,26 @@ public class MenuManager : MonoBehaviour {
     public void CreditsButton()
     {
 
+    }
+
+    /// <summary>
+    /// Ends the turn of the current player
+    /// </summary>
+    public void EndTurn(Text turn)
+    {
+        int temp = gameMan.GetComponent<GameManager>().PlayerTurn;
+
+        if(temp == 0)
+        {
+            turn.text = "Black Player's Turn";
+            gameMan.GetComponent<GameManager>().PlayerTurn = 1;
+        }
+        else if (temp == 1)
+        {
+            gameMan.GetComponent<GameManager>().PlayerTurn = 0;
+            turn.text = "Red Player's Turn";
+        }
+
+        gameMan.GetComponent<GameManager>().FinishTurn = false;
     }
 }

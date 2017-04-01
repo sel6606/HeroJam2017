@@ -11,8 +11,10 @@ public class GameManager : MonoBehaviour {
     #region Public Variables
     public GameObject checkerMan;
     public GameObject menu;
+    public GameObject menuMan;
     public Text blackText;
     public Text redText;
+    public Text turn;
     public Text gameOverText;
     public bool gameOver;
     #endregion
@@ -21,12 +23,26 @@ public class GameManager : MonoBehaviour {
     private int playerTurn;
     private int piecesP1;
     private int piecesP2;
+    private bool finishTurn;
     #endregion
+
+    public int PlayerTurn
+    {
+        get { return playerTurn; }
+        set { playerTurn = value; }
+    }
+
+    public bool FinishTurn
+    {
+        get { return finishTurn; }
+        set { finishTurn = value; }
+    }
 
 
     // Use this for initialization
     void Start ()
     {
+        finishTurn = false;
         gameOver = false;
         menu.SetActive(false);
         Setup();
@@ -50,6 +66,11 @@ public class GameManager : MonoBehaviour {
         else
         {
             UpdateScore();
+        }
+
+        if(finishTurn)
+        {
+            menuMan.GetComponent<MenuManager>().EndTurn(turn);
         }
 	}
 
