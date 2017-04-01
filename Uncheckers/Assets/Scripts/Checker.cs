@@ -109,8 +109,6 @@ public class Checker : MonoBehaviour
     void Start()
     {
 
-        checkerManager.GetComponent<CheckerManager>();
-
     }
 
     //Creates a checker

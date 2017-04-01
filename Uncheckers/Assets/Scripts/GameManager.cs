@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour {
     /// <summary>
     /// Tells the checker manager to initialize the array and sets up the initial values of the pieces remaining
     /// </summary>
-    void Setup()
+    public void Setup()
     {
         playerTurn = 0;
         checkerMan.GetComponent<CheckerManager>().InitArray();

@@ -7,6 +7,10 @@ using UnityEngine;
 /// </summary>
 public class MenuManager : MonoBehaviour {
 
+
+    public GameObject checkerMan;
+    public GameObject gameMan;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -31,7 +35,10 @@ public class MenuManager : MonoBehaviour {
     /// </summary>
     public void RestartButton()
     {
-
+        checkerMan.GetComponent<CheckerManager>().InitArray();
+        gameMan.GetComponent<GameManager>().gameOver = false;
+        gameMan.GetComponent<GameManager>().menu.SetActive(false);
+        gameMan.GetComponent<GameManager>().Setup();
     }
 
     /// <summary>
