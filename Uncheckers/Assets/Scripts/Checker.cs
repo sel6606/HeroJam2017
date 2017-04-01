@@ -143,16 +143,25 @@ public class Checker : MonoBehaviour
     public void Move(int newX, int newY, Vector3 newPosition)
     {
 
+        //updates checker position in 3d space
+        this.PositionChecker = newPosition;
+
+        this.gameObject.transform.position = this.PositionChecker;
+
+        //updates the checker position int the array
+        checkerManager.GetComponent<CheckerManager>().EditArray(this.indexX, this.indexY, newX, newY);
+
         //changes x and y positions of the checker in the array
         this.indexX = newX;
 
         this.indexY = newY;
 
-        //updates checker position in 3d space
-        this.PositionChecker = newPosition;
+    }
 
-        //updates the checker position int the array
-        checkerManager.GetComponent<CheckerManager>().EditArray(this.indexX, this.indexY, newX, newY);
+    public void MoveOne(int newX, int newY, Vector3 newPosition)
+    {
+
+        Move(newX, newY, newPosition); //calls move
 
         //declares turn over
         moveOver = true;
@@ -163,7 +172,7 @@ public class Checker : MonoBehaviour
     {
 
         //calls move
-        Move(newX, newY, newPosition);
+        Move(newX, newY, newPosition); //calls jump
 
     }
 
