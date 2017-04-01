@@ -40,6 +40,33 @@ public class CheckerManager : MonoBehaviour {
         return true;
     }
 
+    ///<summary>
+    /// Accesses and edits the array for a checker objects
+    ///</summary>
+    public void EditArray(int oldIndexX, int oldIndexY, int newIndexX, int newIndexY)
+    {
+
+        //stores checker
+        //int tempHold = checkBoard[oldIndexX, oldIndexY];
+
+        //moves checker to new position
+        //checkBoard[newIndexX, newIndexY] = tempHold;
+
+        //removes old checker
+        //checkBoard[oldIndexX, oldIndexY] = 0;
+
+    }
+
+    ///<summary>
+    /// Removes a checker from the array
+    ///</summary>
+    public void removeChecker(int indexX, int indexY)
+    {
+
+        //checkBoard[indexX, indexY] = 0;
+
+    }
+
     /// <summary>
     /// Sets up the board, 0 is empty space, 1 is red checker, 2 is black checker
     /// </summary>
