@@ -48,11 +48,11 @@ public class Checker : MonoBehaviour
     #endregion
 
 
-   
     #region
     cColor currentColor;
     
     private cColor checkerColor;
+
 
     public cColor CheckerColor
     {
