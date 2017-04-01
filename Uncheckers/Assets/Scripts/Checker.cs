@@ -152,15 +152,15 @@ public class Checker : MonoBehaviour
         //updates the checker position int the array
         checkerManager.GetComponent<CheckerManager>().EditArray(this.indexX, this.indexY, newX, newY);
 
-        //declares turn over
-        moveOver = true;
-
     }
 
     public void MoveOne(int newX, int newY, Vector3 newPosition)
     {
 
         Move(newX, newY, newPosition); //calls move
+
+        //declares turn over
+        moveOver = true;
 
     }
 
