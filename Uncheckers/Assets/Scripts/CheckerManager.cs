@@ -17,6 +17,11 @@ public class CheckerManager : MonoBehaviour {
     //prefab for the checkers.
     public GameObject checkPre;
 
+    //Prefabs for the movement indicators
+    public GameObject colChecker;
+
+    public GameObject illum;
+
     //position for lowes left corner
     public GameObject basePos;
 
@@ -318,6 +323,23 @@ public class CheckerManager : MonoBehaviour {
         {
             testCheck.jumpDnr = true;
         }
+    }
+
+    /// <summary>
+    /// Finds what checker was picked, shows where it can move, and allows the user to move it.
+    /// </summary>
+    /// <param name="data"></param>
+    public void MoveChecker(PointerEventData data)
+    {
+        GameObject picked = ReturnChecker(data);
+
+        Checker info = picked.GetComponent<Checker>();
+
+        IsMoveLegal(picked);
+
+        IsJumpLegal(picked);
+
+
     }
 
 
