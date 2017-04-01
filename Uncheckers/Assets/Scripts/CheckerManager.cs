@@ -97,7 +97,7 @@ public class CheckerManager : MonoBehaviour {
 
     }
 
-    /*public Checker ReturnChecker()
+    public Checker ReturnChecker()
     {
 
         Checker clicked;
@@ -116,7 +116,7 @@ public class CheckerManager : MonoBehaviour {
 
         return clicked;
 
-    }*/
+    }
 
     /// <summary>
     /// Sets up the board, 0 is empty space, 1 is red checker, 2 is black checker

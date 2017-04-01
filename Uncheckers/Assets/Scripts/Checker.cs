@@ -47,20 +47,12 @@ public class Checker : MonoBehaviour
     }
     #endregion
 
-<<<<<<< HEAD
     //sets enum color of checker
-=======
->>>>>>> ea04cc985141c9a94dc243309b389c275e2552bf
-
    
     #region
     cColor currentColor;
     
     private cColor checkerColor;
-<<<<<<< HEAD
-
-=======
->>>>>>> ea04cc985141c9a94dc243309b389c275e2552bf
 
     public cColor CheckerColor
     {
@@ -144,7 +136,7 @@ public class Checker : MonoBehaviour
 
     }
 
-    void Move(int newX, int newY, Vector3 newPosition)
+    public void Move(int newX, int newY, Vector3 newPosition)
     {
 
         //changes x and y positions of the checker in the array
@@ -163,7 +155,7 @@ public class Checker : MonoBehaviour
 
     }
 
-    void Jump(int newX, int newY, Vector3 newPosition)
+    public void Jump(int newX, int newY, Vector3 newPosition)
     {
 
         //calls move
@@ -171,7 +163,7 @@ public class Checker : MonoBehaviour
 
     }
 
-    void Flip()
+    public void Flip()
     {
 
         //sets flipped to true
