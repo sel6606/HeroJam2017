@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Class that contains methods that handle menu behaviors
@@ -28,6 +29,17 @@ public class MenuManager : MonoBehaviour {
     {
         Debug.Log("Game has quit");
         Application.Quit();
+    }
+
+    /// <summary>
+    /// Start the Game
+    /// </summary>
+    public void StartButton()
+    {
+
+        //loads scene // change to correct scene
+        SceneManager.LoadScene("main");
+
     }
 
     /// <summary>

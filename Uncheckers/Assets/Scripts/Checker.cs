@@ -29,6 +29,7 @@ public class Checker : MonoBehaviour
 
     //move bools
     #region
+
     public bool prevMoveMove;
     public bool moveOver;
     #endregion
