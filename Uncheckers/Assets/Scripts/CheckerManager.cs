@@ -63,7 +63,7 @@ public class CheckerManager : MonoBehaviour {
     public void removeChecker(int indexX, int indexY)
     {
 
-        //checkBoard[indexX, indexY] = 0;
+        checkBoard[indexX, indexY] = null;
 
     }
 
