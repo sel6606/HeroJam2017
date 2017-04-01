@@ -22,6 +22,9 @@ GameObject:
   - component: {fileID: 33535639548818084}
   - component: {fileID: 23105721849269292}
   - component: {fileID: 95916714979433124}
+  - component: {fileID: 114269918534231530}
+  - component: {fileID: 114810721187633376}
+  - component: {fileID: 136411946218794174}
   m_Layer: 0
   m_Name: Neutral Checker
   m_TagString: Untagged
@@ -36,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1724180215881450}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.967108, y: -11.613075, z: -5.6973324}
+  m_LocalPosition: {x: -28.752285, y: 20.998337, z: 30.626297}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,3 +100,69 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114269918534231530
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1724180215881450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c5a8db74877804d819d3e0b8362c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selected: 0
+  moveUpL: {x: 0, y: 0}
+  moveUpR: {x: 0, y: 0}
+  moveDnL: {x: 0, y: 0}
+  moveDnr: {x: 0, y: 0}
+  jumpUpL: {x: 0, y: 0}
+  jumpUpR: {x: 0, y: 0}
+  jumpDnL: {x: 0, y: 0}
+  jumpDnr: {x: 0, y: 0}
+  prevMoveMove: 0
+  moveOver: 0
+  checkerManager: {fileID: 0}
+--- !u!114 &114810721187633376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1724180215881450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
+--- !u!136 &136411946218794174
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1724180215881450}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.008005703
+  m_Height: 0.0039992016
+  m_Direction: 1
+  m_Center: {x: -0.0000000037252903, y: 0.00038687495, z: -0.0000000023283064}

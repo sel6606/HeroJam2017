@@ -16,15 +16,17 @@ public class Checker : MonoBehaviour
     public bool selected;
 
     #region
-    public bool moveUpL;
-    public bool moveUpR;
-    public bool moveDnL;
-    public bool moveDnr;
+    public Vector2 moveUpL;
+    public Vector2 moveUpR;
+    public Vector2 moveDnL;
+    public Vector2 moveDnr;
 
-    public bool jumpUpL;
-    public bool jumpUpR;
-    public bool jumpDnL;
-    public bool jumpDnr;
+    public Vector2 jumpUpL;
+    public Vector2 jumpUpR;
+    public Vector2 jumpDnL;
+    public Vector2 jumpDnr;
+
+    public Vector2?[] moveArray = new Vector2?[8];
     #endregion
 
     //move bools
@@ -171,6 +173,13 @@ public class Checker : MonoBehaviour
         //sets flipped to true
         Flipped = true;
 
+    }
+
+    void OnMouseDown()
+    {
+        Debug.Log("clicked " + gameObject.name);
+
+        checkerManager.GetComponent<CheckerManager>().MoveChecker(gameObject);
     }
 
 }
