@@ -157,11 +157,18 @@ public class Checker : MonoBehaviour
 
     }
 
+    public void MoveOne(int newX, int newY, Vector3 newPosition)
+    {
+
+        Move(newX, newY, newPosition); //calls move
+
+    }
+
     public void Jump(int newX, int newY, Vector3 newPosition)
     {
 
         //calls move
-        Move(newX, newY, newPosition);
+        Move(newX, newY, newPosition); //calls jump
 
     }
 
