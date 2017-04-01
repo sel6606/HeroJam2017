@@ -47,23 +47,36 @@ public class CheckerManager : MonoBehaviour {
     {
 
         //stores checker
-        //int tempHold = checkBoard[oldIndexX, oldIndexY];
+        GameObject tempHold = checkBoard[oldIndexX, oldIndexY];
 
         //moves checker to new position
-        //checkBoard[newIndexX, newIndexY] = tempHold;
+        checkBoard[newIndexX, newIndexY] = tempHold;
 
         //removes old checker
-        //checkBoard[oldIndexX, oldIndexY] = 0;
+        checkBoard[oldIndexX, oldIndexY] = null;
 
     }
 
     ///<summary>
     /// Removes a checker from the array
     ///</summary>
-    public void removeChecker(int indexX, int indexY)
+    public void removeChecker(GameObject ob)
     {
+        Checker check = ob.GetComponent<Checker>();
 
-        checkBoard[indexX, indexY] = null;
+        checkBoard[check.indexX, check.indexY] = null;
+
+        if(check.CheckerColor == cColor.Black)
+        {
+            blackLeft--;
+        }
+        if(check.CheckerColor == cColor.Red)
+        {
+            redLeft--;
+        }
+
+        Destroy(ob);
+        
 
     }
 
