@@ -1,14 +1,18 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-
+Project("{77DC60CB-B2B3-A975-606D-76E46678A92A}") = "Uncheckers", "Assembly-CSharp.csproj", "{ADCC95FD-BB0E-964D-0D67-4AF47D5D8AF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-
+		{ADCC95FD-BB0E-964D-0D67-4AF47D5D8AF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADCC95FD-BB0E-964D-0D67-4AF47D5D8AF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADCC95FD-BB0E-964D-0D67-4AF47D5D8AF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADCC95FD-BB0E-964D-0D67-4AF47D5D8AF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

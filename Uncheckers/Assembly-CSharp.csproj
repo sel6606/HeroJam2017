@@ -47,9 +47,11 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scenes\NewBehaviourScript.cs" />
+     <Compile Include="Assets\Scripts\Checker.cs" />
+     <Compile Include="Assets\Scripts\CheckerManager.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
      <None Include="Assets\Textures\blank.txt" />
      <None Include="Assets\Prefabs\blank.txt" />
-     <None Include="Assets\Scripts\blank.txt" />
      <None Include="Assets\Models\blank.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
