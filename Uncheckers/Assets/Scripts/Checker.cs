@@ -40,7 +40,7 @@ public class Checker : MonoBehaviour
     }
 
     //sets enum color of checker
-    private cColor checkerColor;
+    public cColor checkerColor;
 
     public cColor CheckerColor
     {
@@ -90,7 +90,7 @@ public class Checker : MonoBehaviour
     void Start()
     {
 
-        checkerManager.GetComponent<CheckerManager>();
+        //checkerManager.GetComponent<CheckerManager>();
 
     }
 
