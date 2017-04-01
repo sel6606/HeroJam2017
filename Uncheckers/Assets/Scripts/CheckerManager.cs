@@ -273,18 +273,60 @@ public class CheckerManager : MonoBehaviour {
     /// <summary>
     /// Checks where a checker can move
     /// </summary>
-    public void IsMoveLegal(Checker check)
+    public void IsMoveLegal(GameObject check)
     {
+        Checker testCheck = check.GetComponent<Checker>();
 
+        int inX = testCheck.indexX;
+
+        int inY = testCheck.indexY;
+
+        if(inX > 1 && inY < 7 && checkBoard[inX-1,inY+1] == null)
+        {
+            testCheck.moveUpL = true;
+        }
+        if (inX < 7 && inY < 7 && checkBoard[inX + 1, inY + 1] == null)
+        {
+            testCheck.moveUpR = true;
+        }
+        if (inX < 7 && inY > 1 && checkBoard[inX + 1, inY - 1] == null)
+        {
+            testCheck.moveDnr = true;
+        }
+        if (inX > 1 && inY > 1 && checkBoard[inX - 1, inY - 1] == null)
+        {
+            testCheck.moveDnL = true;
+        }
     }
 
     /// <summary>
     /// Checks where a checker can jump
     /// </summary>
     /// <param name="check"></param>
-    public void IsJumpLegal(Checker check)
+    public void IsJumpLegal(GameObject check)
     {
+        Checker testCheck = check.GetComponent<Checker>();
 
+        int inX = testCheck.indexX;
+
+        int inY = testCheck.indexY;
+
+        if (inX > 2 && inY < 6 && checkBoard[inX - 1, inY + 1] != null && checkBoard[inX -2, inY + 2] == null)
+        {
+            testCheck.jumpUpL = true;
+        }
+        if (inX < 6 && inY < 6 && checkBoard[inX + 1, inY + 1] != null && checkBoard[inX + 2, inY + 2] == null)
+        {
+            testCheck.jumpUpR = true;
+        }
+        if (inX > 2 && inY > 2 && checkBoard[inX - 1, inY - 1] != null && checkBoard[inX - 2, inY - 2] == null)
+        {
+            testCheck.jumpDnL = true;
+        }
+        if (inX < 6 && inY > 2 && checkBoard[inX + 1, inY - 1] != null && checkBoard[inX + 2, inY - 2] == null)
+        {
+            testCheck.jumpDnr = true;
+        }
     }
 
 
