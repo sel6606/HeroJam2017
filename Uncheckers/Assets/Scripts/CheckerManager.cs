@@ -96,7 +96,11 @@ public class CheckerManager : MonoBehaviour {
 
     }
 
-    //called when checker is clicked
+    /// <summary>
+    /// Called whenever an object is clicked
+    /// </summary>
+    /// <param name="data"></param>
+    /// <returns></returns>
 
     public GameObject ReturnChecker(PointerEventData data)
     {
