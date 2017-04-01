@@ -67,6 +67,44 @@ public class CheckerManager : MonoBehaviour {
 
     }
 
+    public void Restart()
+    {
+
+        for(int i = 0; i < 7; i++)
+        {
+
+            for (int j = 0; j < 7; j++)
+            {
+
+                checkBoard[i, j] = null;
+
+            }
+
+        }
+
+    }
+
+    /*public Checker ReturnChecker()
+    {
+
+        Checker clicked;
+
+        foreach(Checker check in checkBoard)
+        {
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+
+
+
+            }
+
+        }       
+
+        return clicked;
+
+    }*/
+
     /// <summary>
     /// Sets up the board, 0 is empty space, 1 is red checker, 2 is black checker
     /// </summary>
