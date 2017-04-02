@@ -437,9 +437,9 @@ public class CheckerManager : MonoBehaviour {
     /// <param name="data"></param>
     public void MoveChecker(GameObject picked)
     {
-        if (gameMan.GetComponent<GameManager>().PlayerTurn == (int)cColor.Black)
+        if (gameMan.GetComponent<GameManager>().PlayerTurn != (int)picked.GetComponent<Checker>().CheckerColor && picked.GetComponent<Checker>().CheckerColor != cColor.Unknown)
         {
-
+            return;
         }
         if(lastSelected != null)
         {
