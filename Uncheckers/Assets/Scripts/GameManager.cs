@@ -112,7 +112,12 @@ public class GameManager : MonoBehaviour {
     void EndTurn()
     {
 
-        //if((checkerMan.GetComponent<CheckerManager>().movePos == false && checkerMan.GetComponent<CheckerManager>().jumpPos == false) || )
+        if(checkerMan.GetComponent<CheckerManager>().movePos == false && checkerMan.GetComponent<CheckerManager>().jumpPos == false)
+        {
+
+            finishTurn = true;
+
+        }
 
     }
 

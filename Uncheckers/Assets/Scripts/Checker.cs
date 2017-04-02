@@ -119,6 +119,7 @@ public class Checker : MonoBehaviour
 
         //checkerManager.GetComponent<CheckerManager>();
 		animate = gameObject.GetComponent<Animation>();
+        flipped = false;
 
     }
 
@@ -152,6 +153,7 @@ public class Checker : MonoBehaviour
         this.PositionChecker = newPosition;
 
         this.gameObject.transform.position = this.PositionChecker;
+        this.gameObject.GetComponentInChildren<Transform>().position = this.PositionChecker;
 
 
 

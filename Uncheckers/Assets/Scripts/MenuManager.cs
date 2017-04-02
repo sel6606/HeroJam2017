@@ -57,14 +57,14 @@ public class MenuManager : MonoBehaviour {
     {
         int temp = gameMan.GetComponent<GameManager>().PlayerTurn;
 
-        if(temp == 0)
+        if(temp == 1)
         {
             turn.text = "Black Player's Turn";
-            gameMan.GetComponent<GameManager>().PlayerTurn = 1;
-        }
-        else if (temp == 1)
-        {
             gameMan.GetComponent<GameManager>().PlayerTurn = 0;
+        }
+        else if (temp == 0)
+        {
+            gameMan.GetComponent<GameManager>().PlayerTurn = 1;
             turn.text = "Red Player's Turn";
         }
 

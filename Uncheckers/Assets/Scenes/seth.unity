@@ -1382,9 +1382,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a98a15d961a444397505cd1199225f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movePos: 0
+  jumpPos: 0
+  selected: {fileID: 0}
+  lastSelected: {fileID: 0}
+  gameMan: {fileID: 251104185}
+  hasMoved: 0
   redLeft: 12
   blackLeft: 12
   checkPre: {fileID: 1724180215881450, guid: d8492b3f56c6ed444ac6d34797c4aa85, type: 2}
+  colChecker: {fileID: 1236480396082942, guid: 3d2ddaaea9ca7a242a6633e319cf055d, type: 2}
   basePos: {fileID: 232784934}
 --- !u!4 &1679107594
 Transform:
