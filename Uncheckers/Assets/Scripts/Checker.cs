@@ -194,7 +194,7 @@ public class Checker : MonoBehaviour
 
 	public void AnimateChecker(string animationName)
 	{
-		animate.Play (animationName);
+		//animate.Play (animationName);
 	}
 
     void OnMouseDown()

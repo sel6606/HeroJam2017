@@ -8,6 +8,12 @@ public class CheckerManager : MonoBehaviour {
     //2D array of checker locations
     public GameObject[,] checkBoard = new GameObject[8, 8];
 
+
+    //bools if move or jump is possible
+
+    public bool movePos;
+    public bool jumpPos;
+
     //2D array of move indicators
     public GameObject[,] indicBoard = new GameObject[8, 8];
 
@@ -17,6 +23,7 @@ public class CheckerManager : MonoBehaviour {
     public GameObject lastSelected;
 
     public bool hasMoved;
+
 
     //The number of red checkers left
     public int redLeft;
@@ -93,6 +100,9 @@ public class CheckerManager : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// Resets the array to be void
+    /// </summary>
     public void Restart()
     {
 
@@ -351,13 +361,14 @@ public class CheckerManager : MonoBehaviour {
         if (inX > 0 && inY < 7 && checkBoard[inX-1,inY+1] == null)
         {
             testCheck.moveArray[0] = new Vector2(inX - 1, inY + 1);
-            Debug.Log(inX - 1);
+            
         }
         else
         {
             testCheck.moveArray[0] = null;
         }
-        if (inX < 7 && inY < 7 && checkBoard[inX + 1, inY + 1] == null)
+
+        if(inX < 7 && inY < 7 && checkBoard[inX + 1, inY + 1] == null)
         {
             testCheck.moveArray[1] = new Vector2(inX + 1, inY + 1);
         }
@@ -367,6 +378,7 @@ public class CheckerManager : MonoBehaviour {
         }
         if (inX < 7 && inY > 0 && checkBoard[inX + 1, inY - 1] == null)
         {
+           
             testCheck.moveArray[2] = new Vector2(inX + 1, inY - 1);
         }
         else
@@ -380,7 +392,9 @@ public class CheckerManager : MonoBehaviour {
         else
         {
             testCheck.moveArray[3] = null;
+
         }
+
     }
 
     /// <summary>
@@ -397,6 +411,15 @@ public class CheckerManager : MonoBehaviour {
 
         if (inX > 1 && inY < 6 && checkBoard[inX - 1, inY + 1] != null && checkBoard[inX -2, inY + 2] == null)
         {
+            testCheck.moveArray[5] = new Vector2(inX - 2, inY + 2);
+        }
+        else
+        {
+            testCheck.moveArray[5] = null;
+        }
+        if (inX < 6 && inY < 6 && checkBoard[inX + 1, inY + 1] != null && checkBoard[inX + 2, inY + 2] == null)
+        {
+           
             testCheck.moveArray[4] = new Vector2(inX - 2, inY + 2);
         }
         else
@@ -414,13 +437,17 @@ public class CheckerManager : MonoBehaviour {
         if (inX > 1 && inY > 1 && checkBoard[inX - 1, inY - 1] != null && checkBoard[inX - 2, inY - 2] == null)
         {
             testCheck.moveArray[6] = new Vector2(inX - 2, inY - 2);
+
         }
         else
         {
+           
             testCheck.moveArray[6] = null;
+
         }
         if (inX < 6 && inY > 1 && checkBoard[inX + 1, inY - 1] != null && checkBoard[inX + 2, inY - 2] == null)
         {
+
             testCheck.moveArray[7] = new Vector2(inX + 2, inY - 2);
         }
         else
@@ -508,6 +535,7 @@ public class CheckerManager : MonoBehaviour {
             {
                 indicBoard[(int)info.moveArray[i].GetValueOrDefault().x, (int)info.moveArray[i].GetValueOrDefault().y].SetActive(false);
             }
+
         }
     }
 

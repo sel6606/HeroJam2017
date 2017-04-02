@@ -106,6 +106,17 @@ public class GameManager : MonoBehaviour {
     }
 
     /// <summary>
+    /// Checks to see if the player is still capable of moving a piece
+    /// if not the turn ends
+    /// </summary>
+    void EndTurn()
+    {
+
+        //if((checkerMan.GetComponent<CheckerManager>().movePos == false && checkerMan.GetComponent<CheckerManager>().jumpPos == false) || )
+
+    }
+
+    /// <summary>
     /// Ends the game and declares a winner.
     /// </summary>
     /// <param name="winner">The winner of the game, 0 for black, 1 for red</param>
