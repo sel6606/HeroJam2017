@@ -177,6 +177,7 @@ public class Checker : MonoBehaviour
 
     public void Jump(int newX, int newY, Vector3 newPosition)
     {
+        checkerManager.GetComponent<CheckerManager>().removeChecker(checkerManager.GetComponent<CheckerManager>().checkBoard[(indexX + ((newX - indexX)/2)), (indexY + ((newY - indexY)/2))]);
 
         //calls move
         Move(newX, newY, newPosition); //calls jump
