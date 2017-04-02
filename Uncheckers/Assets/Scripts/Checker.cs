@@ -11,20 +11,25 @@ public class Checker : MonoBehaviour
     //Whether or not it is flipped
     //Index in the 2D array
 
+	//public animation for each checker
+	public Animation animate;
+
     //move and jump bools that check previous move
 
     public bool selected;
 
     #region
-    public bool moveUpL;
-    public bool moveUpR;
-    public bool moveDnL;
-    public bool moveDnR;
+    public Vector2 moveUpL;
+    public Vector2 moveUpR;
+    public Vector2 moveDnL;
+    public Vector2 moveDnr;
 
-    public bool jumpUpL;
-    public bool jumpUpR;
-    public bool jumpDnL;
-    public bool jumpDnR;
+    public Vector2 jumpUpL;
+    public Vector2 jumpUpR;
+    public Vector2 jumpDnL;
+    public Vector2 jumpDnr;
+
+    public Vector2?[] moveArray = new Vector2?[8];
     #endregion
 
     //move bools
@@ -43,7 +48,7 @@ public class Checker : MonoBehaviour
     public Vector3 PositionChecker
     {
 
-        get { return gameObject.transform.position; }
+        get { return positionChecker; }
 
         set { positionChecker = value; }
 
@@ -113,6 +118,7 @@ public class Checker : MonoBehaviour
     {
 
         //checkerManager.GetComponent<CheckerManager>();
+		animate = gameObject.GetComponent<Animation>();
 
     }
 
@@ -147,6 +153,8 @@ public class Checker : MonoBehaviour
 
         this.gameObject.transform.position = this.PositionChecker;
 
+
+
         //updates the checker position int the array
         checkerManager.GetComponent<CheckerManager>().EditArray(this.indexX, this.indexY, newX, newY);
 
@@ -169,6 +177,7 @@ public class Checker : MonoBehaviour
 
     public void Jump(int newX, int newY, Vector3 newPosition)
     {
+        checkerManager.GetComponent<CheckerManager>().removeChecker(checkerManager.GetComponent<CheckerManager>().checkBoard[(indexX + ((newX - indexX)/2)), (indexY + ((newY - indexY)/2))]);
 
         //calls move
         Move(newX, newY, newPosition); //calls jump
@@ -181,6 +190,18 @@ public class Checker : MonoBehaviour
         //sets flipped to true
         Flipped = true;
 
+    }
+
+	public void AnimateChecker(string animationName)
+	{
+		animate.Play (animationName);
+	}
+
+    void OnMouseDown()
+    {
+        Debug.Log("clicked " + gameObject.name);
+
+        checkerManager.GetComponent<CheckerManager>().MoveChecker(gameObject);
     }
 
 }
