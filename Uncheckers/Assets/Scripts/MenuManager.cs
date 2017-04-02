@@ -67,7 +67,7 @@ public class MenuManager : MonoBehaviour {
             gameMan.GetComponent<GameManager>().PlayerTurn = 1;
             turn.text = "Red Player's Turn";
         }
-
+        checkerMan.GetComponent<CheckerManager>().hasMoved = false;
         gameMan.GetComponent<GameManager>().FinishTurn = false;
     }
 }

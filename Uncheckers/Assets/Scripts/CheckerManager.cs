@@ -59,6 +59,10 @@ public class CheckerManager : MonoBehaviour {
         blackLeft = 12;
 
         hasMoved = false;
+
+        movePos = true;
+
+        jumpPos = true;
 	}
 	
 	// Update is called once per frame
@@ -468,7 +472,15 @@ public class CheckerManager : MonoBehaviour {
         {
             return;
         }
-        if(lastSelected != null)
+        if (hasMoved == false)
+        {
+            selected = picked;
+        }
+        else
+        {
+            return;
+        }
+        if (lastSelected != null)
         {
             Checker lastInfo = lastSelected.GetComponent<Checker>();
 
@@ -481,15 +493,7 @@ public class CheckerManager : MonoBehaviour {
             }
         }
         lastSelected = picked;
-        if(hasMoved == false)
-        {
-            selected = picked;
-        }
-        else
-        {
-            return;
-        }
-      
+       
         Checker info = picked.GetComponent<Checker>();
 
         IsMoveLegal(picked);
@@ -511,7 +515,11 @@ public class CheckerManager : MonoBehaviour {
     /// <param name="picked"></param>
     public void PostMove(GameObject picked)
     {
+        hasMoved = true;
+
         Checker info = picked.GetComponent<Checker>();
+
+        movePos = false;
 
 		HasJumped = true;
 
@@ -530,12 +538,29 @@ public class CheckerManager : MonoBehaviour {
                 indicBoard[(int)info.moveArray[i].GetValueOrDefault().x, (int)info.moveArray[i].GetValueOrDefault().y].SetActive(true);
             }
         }
+        bool nojump = true;
+        for (int i = 4; i < 8; i++)
+        {
+            if (info.moveArray[i] != null)
+            {
+                nojump = false;
+            }
+        }
+        if (nojump)
+        {
+            jumpPos = false;
+        }
 
     }
 
     public void Deselect(GameObject picked)
     {
         Checker info = picked.GetComponent<Checker>();
+        hasMoved = true;
+
+        movePos = false;
+
+        jumpPos = false;
 
         for (int i = 0; i < 8; i++)
         {

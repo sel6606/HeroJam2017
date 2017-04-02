@@ -35,6 +35,8 @@ public class lightClickMoveScript : MonoBehaviour {
 			{
 				if (hasAnimated == false) 
 				{
+                    checkScri.hasMoved = true;
+
 					//Instantiate (slideChecker, checkScri.selected.transform.position, checkScri.selected.transform.rotation);
 					checkScri.selected.GetComponent<Checker> ().animate.Play("Slide");
 					//checkScri.selected.GetComponent<MeshRenderer>().enabled = false;
@@ -67,7 +69,8 @@ public class lightClickMoveScript : MonoBehaviour {
 			{
 				if (hasAnimated == false) 
 				{
-					checkScri.selected.GetComponent<Checker> ().animate.Play("Jump");
+                    checkScri.hasMoved = true;
+                    checkScri.selected.GetComponent<Checker> ().animate.Play("Jump");
 					hasAnimated = true;
 				} 
 				else
@@ -76,7 +79,7 @@ public class lightClickMoveScript : MonoBehaviour {
 
 					bool flip = false;
 
-					if (checkScri.HasJumped)
+					if (checkScri.HasJumped && checkScri.selected.GetComponent<Checker>().Flipped == false)
 					{
 						flip = true;
 					}

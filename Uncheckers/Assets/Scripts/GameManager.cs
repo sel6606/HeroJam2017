@@ -52,6 +52,9 @@ public class GameManager : MonoBehaviour {
 	void Update ()
     {
         //If the game is over call GameOver, otherwise update the score
+
+        EndTurn();
+
         if (gameOver)
         {
             if (piecesP1 == 0)
@@ -70,6 +73,7 @@ public class GameManager : MonoBehaviour {
 
         if(finishTurn)
         {
+            checkerMan.GetComponent<CheckerManager>().hasMoved = false;
             menuMan.GetComponent<MenuManager>().EndTurn(turn);
         }
 	}
@@ -114,6 +118,11 @@ public class GameManager : MonoBehaviour {
 
         if(checkerMan.GetComponent<CheckerManager>().movePos == false && checkerMan.GetComponent<CheckerManager>().jumpPos == false)
         {
+            checkerMan.GetComponent<CheckerManager>().jumpPos = true;
+
+            checkerMan.GetComponent<CheckerManager>().movePos = true;
+
+            
 
             finishTurn = true;
 
