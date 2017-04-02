@@ -16,6 +16,8 @@ public class CheckerManager : MonoBehaviour {
 
     public GameObject lastSelected;
 
+    public GameObject gameMan;
+
     public bool hasMoved;
 
     //The number of red checkers left
@@ -435,6 +437,10 @@ public class CheckerManager : MonoBehaviour {
     /// <param name="data"></param>
     public void MoveChecker(GameObject picked)
     {
+        if (gameMan.GetComponent<GameManager>().PlayerTurn == (int)cColor.Black)
+        {
+
+        }
         if(lastSelected != null)
         {
             Checker lastInfo = lastSelected.GetComponent<Checker>();
