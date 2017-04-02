@@ -6,7 +6,7 @@ public class Animate : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		Debug.Log ("COmplete");
 	}
 	
 	// Update is called once per frame

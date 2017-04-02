@@ -11,6 +11,9 @@ public class Checker : MonoBehaviour
     //Whether or not it is flipped
     //Index in the 2D array
 
+	//Variable for animation
+	private Animation animate;
+
     //move and jump bools that check previous move
 
     public bool selected;
@@ -112,6 +115,7 @@ public class Checker : MonoBehaviour
     {
 
         //checkerManager.GetComponent<CheckerManager>();
+		animate = gameObject.GetComponent<Animation>();
 
     }
 
@@ -133,9 +137,14 @@ public class Checker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-
+		if (Input.GetKeyDown(KeyCode.C))
+		{
+			AnimateChecker ("Flip");
+		}
+		if (!animate.isPlaying)
+		{
+			Debug.Log ("Not Playing");
+		}
     }
 
     public void Move(int newX, int newY, Vector3 newPosition)
@@ -158,6 +167,8 @@ public class Checker : MonoBehaviour
 
     public void MoveOne(int newX, int newY, Vector3 newPosition)
     {
+		//Play move animation
+		AnimateChecker("Slide");
 
         Move(newX, newY, newPosition); //calls move
 
@@ -181,5 +192,10 @@ public class Checker : MonoBehaviour
         Flipped = true;
 
     }
+
+	private void AnimateChecker(string animationName)
+	{
+		animate.Play (animationName);
+	}
 
 }
