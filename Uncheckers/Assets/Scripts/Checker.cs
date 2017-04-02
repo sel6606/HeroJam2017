@@ -11,6 +11,9 @@ public class Checker : MonoBehaviour
     //Whether or not it is flipped
     //Index in the 2D array
 
+	//public animation for each checker
+	public Animation animate;
+
     //move and jump bools that check previous move
 
     public bool selected;
@@ -115,6 +118,7 @@ public class Checker : MonoBehaviour
     {
 
         //checkerManager.GetComponent<CheckerManager>();
+		animate = gameObject.GetComponent<Animation>();
 
     }
 
@@ -186,6 +190,11 @@ public class Checker : MonoBehaviour
         Flipped = true;
 
     }
+
+	public void AnimateChecker(string animationName)
+	{
+		animate.Play (animationName);
+	}
 
     void OnMouseDown()
     {
