@@ -340,7 +340,6 @@ public class CheckerManager : MonoBehaviour {
         for (int j = 0; j < 8; j++)
         {
 
-
             for (int i = 0; i < 8; i++)
             {
                 GameObject clickBox = Instantiate(colChecker, new Vector3(basePos.transform.position.x + offset * j, basePos.transform.position.y, basePos.transform.position.z + offset * i), checkPre.transform.rotation);

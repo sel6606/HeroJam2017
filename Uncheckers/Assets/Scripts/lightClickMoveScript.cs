@@ -23,6 +23,8 @@ public class lightClickMoveScript : MonoBehaviour {
 
     private Vector2 distance;
     private Vector3 rot;
+    private Vector3 jumprot;
+    
 
 	// Use this for initialization
 	void Start () {
@@ -31,7 +33,7 @@ public class lightClickMoveScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        jumprot = Vector3.zero;
 		if (checkScri != null && !checkScri.selected.GetComponent<Checker> ().animate.isPlaying && hasClicked == true) 
 		{
 			if(Mathf.Abs((float)(checkScri.selected.GetComponent<Checker>().indexX - inX)) == 1)
@@ -104,27 +106,29 @@ public class lightClickMoveScript : MonoBehaviour {
                     if (distance.x == -2 && distance.y == -2)
                     {
                         checkScri.selected.transform.Rotate(new Vector3(0, 90, 0));
-                        rot = new Vector3(0, -90, 0);
+                        jumprot = new Vector3(0, -90, 0);
                     }
-                    if (distance.x == 2 && distance.y == 2)
+                    else if (distance.x == 2 && distance.y == 2)
                     {
                         checkScri.selected.transform.Rotate(new Vector3(0, 270, 0));
-                        rot = new Vector3(0, -270, 0);
+                        jumprot = new Vector3(0, -270, 0);
                     }
-                    if (distance.x == 2 && distance.y == -2)
+                    else if (distance.x == 2 && distance.y == -2)
                     {
                         checkScri.selected.transform.Rotate(new Vector3(0, 0, 0));
-                        rot = new Vector3(0, 0, 0);
+                        jumprot = new Vector3(0, 0, 0);
 
                     }
-                    if (distance.x == -2 && distance.y == 2)
+                    else if (distance.x == -2 && distance.y == 2)
                     {
                         checkScri.selected.transform.Rotate(new Vector3(0, 180, 0));
-                        rot = new Vector3(0, -180, 0);
+                        jumprot = new Vector3(0, -180, 0);
                     }
+
                     Debug.Log(distance);
                     checkScri.selected.GetComponent<Checker> ().animate.Play("Jump");
-					hasAnimated = true;
+                   
+                    hasAnimated = true;
 				} 
 				else
 				{
@@ -136,12 +140,39 @@ public class lightClickMoveScript : MonoBehaviour {
 					{
 						flip = true;
 					}
-                    checkScri.selected.transform.Rotate(rot);
-                    checkScri.PostMove(checkScri.selected);
 
-					checkScri.selected.transform.GetChild(0).transform.position = checkScri.selected.GetComponent<CapsuleCollider> ().bounds.center;
-			
-					hasAnimated = false;
+                    checkScri.selected.transform.Rotate(jumprot);
+                    checkScri.selected.transform.rotation = Quaternion.Euler(Vector3.zero);
+                    
+
+                    checkScri.PostMove(checkScri.selected);
+                    
+                    checkScri.selected.transform.GetChild(0).transform.position = checkScri.selected.GetComponent<CapsuleCollider> ().bounds.center;
+
+                    distance = checkScri.posLoc - checkScri.rotLoc;
+                    if (distance.x == -2 && distance.y == -2)
+                    {
+                        checkScri.selected.transform.Rotate(new Vector3(0, 90, 0));
+                        jumprot = new Vector3(0, -90, 0);
+                    }
+                    else if (distance.x == 2 && distance.y == 2)
+                    {
+                        checkScri.selected.transform.Rotate(new Vector3(0, 270, 0));
+                        jumprot = new Vector3(0, -270, 0);
+                    }
+                    else if (distance.x == 2 && distance.y == -2)
+                    {
+                        checkScri.selected.transform.Rotate(new Vector3(0, 0, 0));
+                        jumprot = new Vector3(0, 0, 0);
+
+                    }
+                    else if (distance.x == -2 && distance.y == 2)
+                    {
+                        checkScri.selected.transform.Rotate(new Vector3(0, 180, 0));
+                        jumprot = new Vector3(0, -180, 0);
+                    }
+
+                    hasAnimated = false;
 
 					hasClicked = false;
 
@@ -150,14 +181,10 @@ public class lightClickMoveScript : MonoBehaviour {
 						if (hasAnimated == false) 
 						{
 							checkScri.selected.GetComponent<Checker> ().animate.Play("Flip");
-							hasAnimated = true;
-						
-						
+                            hasAnimated = true;
 
                             checkScri.changeNow(checkScri.selected);
-
 						
-
 							hasAnimated = false;
 
 							hasClicked = false;

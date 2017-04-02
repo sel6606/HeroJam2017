@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -69,5 +70,10 @@ public class MenuManager : MonoBehaviour {
         }
         checkerMan.GetComponent<CheckerManager>().hasMoved = false;
         gameMan.GetComponent<GameManager>().FinishTurn = false;
+    }
+
+    public void StartButton()
+    {
+        SceneManager.LoadScene(1);
     }
 }
