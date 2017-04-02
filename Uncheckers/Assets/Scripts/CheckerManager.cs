@@ -8,6 +8,10 @@ public class CheckerManager : MonoBehaviour {
     //2D array of checker locations
     public GameObject[,] checkBoard = new GameObject[8, 8];
 
+    //textures to be added to checkers when they show their true colors
+    public Texture redTex;
+    public Texture blackTex;
+
 
     //bools if move or jump is possible
 
@@ -26,6 +30,8 @@ public class CheckerManager : MonoBehaviour {
 
     public bool hasMoved;
 
+    //Shows if the checker is on a seconds jump
+	public bool HasJumped;
 
     //The number of red checkers left
     public int redLeft;
@@ -350,6 +356,8 @@ public class CheckerManager : MonoBehaviour {
     /// </summary>
     public void IsMoveLegal(GameObject check)
     {
+		HasJumped = false;
+
         Checker testCheck = check.GetComponent<Checker>();
 
         int inX = testCheck.indexX;
@@ -413,15 +421,6 @@ public class CheckerManager : MonoBehaviour {
 
         if (inX > 1 && inY < 6 && checkBoard[inX - 1, inY + 1] != null && checkBoard[inX -2, inY + 2] == null)
         {
-            testCheck.moveArray[5] = new Vector2(inX - 2, inY + 2);
-        }
-        else
-        {
-            testCheck.moveArray[5] = null;
-        }
-        if (inX < 6 && inY < 6 && checkBoard[inX + 1, inY + 1] != null && checkBoard[inX + 2, inY + 2] == null)
-        {
-           
             testCheck.moveArray[4] = new Vector2(inX - 2, inY + 2);
         }
         else
@@ -430,6 +429,7 @@ public class CheckerManager : MonoBehaviour {
         }
         if (inX < 6 && inY < 6 && checkBoard[inX + 1, inY + 1] != null && checkBoard[inX + 2, inY + 2] == null)
         {
+           
             testCheck.moveArray[5] = new Vector2(inX + 2, inY + 2);
         }
         else
@@ -513,6 +513,8 @@ public class CheckerManager : MonoBehaviour {
     {
         Checker info = picked.GetComponent<Checker>();
 
+		HasJumped = true;
+
         for (int i = 0; i < 8; i++)
         {
             if (info.moveArray[i] != null)
@@ -545,5 +547,20 @@ public class CheckerManager : MonoBehaviour {
         }
     }
 
+	public void changeNow(GameObject picked)
+	{
+        Checker info = picked.GetComponent<Checker>();
+
+        info.Flipped = true;
+
+        if(info.CheckerColor == cColor.Black)
+        {
+            picked.GetComponentInChildren<Material>().SetTexture(Shader.PropertyToID("checker texture black"), blackTex);
+        }
+        if (info.CheckerColor == cColor.Red)
+        {
+            picked.GetComponentInChildren<Material>().SetTexture(Shader.PropertyToID("checker texture red"), redTex);
+        }
+    }
 
 }
