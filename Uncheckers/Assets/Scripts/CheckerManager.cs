@@ -48,6 +48,10 @@ public class CheckerManager : MonoBehaviour {
     //position for lowes left corner
     public GameObject basePos;
 
+    //vector2 for rotation
+    public Vector2 rotLoc;
+    public Vector2 posLoc;
+
     //float for offset
     float offset;
 
@@ -493,7 +497,10 @@ public class CheckerManager : MonoBehaviour {
             }
         }
         lastSelected = picked;
-       
+
+        posLoc = new Vector2(selected.GetComponent<Checker>().indexX, selected.GetComponent<Checker>().indexY);
+
+
         Checker info = picked.GetComponent<Checker>();
 
         IsMoveLegal(picked);

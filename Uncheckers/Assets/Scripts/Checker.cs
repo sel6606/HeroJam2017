@@ -148,7 +148,6 @@ public class Checker : MonoBehaviour
 
     public void Move(int newX, int newY, Vector3 newPosition)
     {
-
         //updates checker position in 3d space
         this.PositionChecker = newPosition;
 

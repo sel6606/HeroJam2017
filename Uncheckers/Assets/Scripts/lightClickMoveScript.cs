@@ -21,6 +21,9 @@ public class lightClickMoveScript : MonoBehaviour {
 
 	public GameObject baseChecker;
 
+    private Vector2 distance;
+    private Vector3 rot;
+
 	// Use this for initialization
 	void Start () {
 		hasAnimated = false;
@@ -35,10 +38,35 @@ public class lightClickMoveScript : MonoBehaviour {
 			{
 				if (hasAnimated == false) 
 				{
-                    checkScri.hasMoved = true;
+                    checkScri.rotLoc = new Vector2(inX, inY);
 
-					//Instantiate (slideChecker, checkScri.selected.transform.position, checkScri.selected.transform.rotation);
-					checkScri.selected.GetComponent<Checker> ().animate.Play("Slide");
+                    distance = checkScri.posLoc - checkScri.rotLoc;
+
+                    if(distance.x < 0 && distance.y < 0)
+                    {
+                        checkScri.selected.transform.Rotate(new Vector3(0, 90, 0));
+                        rot = new Vector3(0, -90, 0);
+                    }
+                    if (distance.x < 0 && distance.y > 0)
+                    {
+                        checkScri.selected.transform.Rotate(new Vector3(0, 180, 0));
+                        rot = new Vector3(0, -180, 0);
+                    }
+                    if (distance.x > 0 && distance.y < 0)
+                    {
+                        checkScri.selected.transform.Rotate(new Vector3(0, 0, 0));
+                        rot = new Vector3(0, 0, 0);
+
+                    }
+                    if (distance.x > 0 && distance.y > 0)
+                    {
+                        checkScri.selected.transform.Rotate(new Vector3(0, 270, 0));
+                        rot = new Vector3(0, -270, 0);
+                    }
+
+                    checkScri.hasMoved = true;
+                    //Instantiate (slideChecker, checkScri.selected.transform.position, checkScri.selected.transform.rotation);
+                    checkScri.selected.GetComponent<Checker> ().animate.Play("Slide");
 					//checkScri.selected.GetComponent<MeshRenderer>().enabled = false;
 					hasAnimated = true;
 
@@ -49,9 +77,9 @@ public class lightClickMoveScript : MonoBehaviour {
 				{
 					Debug.Log ("End Animation");
 
-					//checkScri.selected.GetComponent<Checker>().animate.Rewind("Slide");
-					checkScri.selected.GetComponent<Checker>().Move(inX, inY, gameObject.transform.position);
-			
+                    checkScri.selected.transform.Rotate(rot);
+                    //checkScri.selected.GetComponent<Checker>().animate.Rewind("Slide");
+                    checkScri.selected.GetComponent<Checker>().Move(inX, inY, gameObject.transform.position);
 					checkScri.Deselect(checkScri.selected);
 
 					checkScri.selected.transform.GetChild(0).transform.position = checkScri.selected.GetComponent<CapsuleCollider> ().bounds.center;
@@ -70,6 +98,31 @@ public class lightClickMoveScript : MonoBehaviour {
 				if (hasAnimated == false) 
 				{
                     checkScri.hasMoved = true;
+
+                    checkScri.rotLoc = new Vector2(inX, inY);
+                    distance = checkScri.posLoc - checkScri.rotLoc;
+                    if (distance.x == -2 && distance.y == -2)
+                    {
+                        checkScri.selected.transform.Rotate(new Vector3(0, 90, 0));
+                        rot = new Vector3(0, -90, 0);
+                    }
+                    if (distance.x == 2 && distance.y == 2)
+                    {
+                        checkScri.selected.transform.Rotate(new Vector3(0, 270, 0));
+                        rot = new Vector3(0, -270, 0);
+                    }
+                    if (distance.x == 2 && distance.y == -2)
+                    {
+                        checkScri.selected.transform.Rotate(new Vector3(0, 0, 0));
+                        rot = new Vector3(0, 0, 0);
+
+                    }
+                    if (distance.x == -2 && distance.y == 2)
+                    {
+                        checkScri.selected.transform.Rotate(new Vector3(0, 180, 0));
+                        rot = new Vector3(0, -180, 0);
+                    }
+                    Debug.Log(distance);
                     checkScri.selected.GetComponent<Checker> ().animate.Play("Jump");
 					hasAnimated = true;
 				} 
@@ -83,8 +136,8 @@ public class lightClickMoveScript : MonoBehaviour {
 					{
 						flip = true;
 					}
-			
-					checkScri.PostMove(checkScri.selected);
+                    checkScri.selected.transform.Rotate(rot);
+                    checkScri.PostMove(checkScri.selected);
 
 					checkScri.selected.transform.GetChild(0).transform.position = checkScri.selected.GetComponent<CapsuleCollider> ().bounds.center;
 			
