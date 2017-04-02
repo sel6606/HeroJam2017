@@ -11,6 +11,11 @@ public class CheckerManager : MonoBehaviour {
     //2D array of move indicators
     public GameObject[,] indicBoard = new GameObject[8, 8];
 
+    //The checker chosen to move, can only be changed if hasMoved is false
+    public GameObject selected;
+
+    public bool hasMoved;
+
     //The number of red checkers left
     public int redLeft;
 
@@ -26,12 +31,17 @@ public class CheckerManager : MonoBehaviour {
     //position for lowes left corner
     public GameObject basePos;
 
+    //float for offset
+    float offset;
+
 	// Use this for initialization
 	void Start ()
     {
         redLeft = 12;
 
         blackLeft = 12;
+
+        hasMoved = false;
 	}
 	
 	// Update is called once per frame
@@ -121,7 +131,7 @@ public class CheckerManager : MonoBehaviour {
     public void InitArray()
     {
         //Float for how far they need to move
-        float offset = checkPre.GetComponent<Renderer>().bounds.size.x + (checkPre.GetComponent<Renderer>().bounds.extents.x / 3);
+        offset = checkPre.GetComponent<Renderer>().bounds.size.x + (checkPre.GetComponent<Renderer>().bounds.extents.x / 3);
 
         int redNum = 12;
 
@@ -307,6 +317,12 @@ public class CheckerManager : MonoBehaviour {
             {
                 GameObject clickBox = Instantiate(colChecker, new Vector3(basePos.transform.position.x + offset * j, basePos.transform.position.y, basePos.transform.position.z + offset * i), checkPre.transform.rotation);
 
+                clickBox.GetComponent<lightClickMoveScript>().checkerMan = gameObject;
+
+                clickBox.GetComponent<lightClickMoveScript>().inX = j;
+
+                clickBox.GetComponent<lightClickMoveScript>().inY = i;
+
                 indicBoard[j, i] = clickBox;
 
                 clickBox.SetActive(false);
@@ -330,7 +346,7 @@ public class CheckerManager : MonoBehaviour {
 
         Debug.Log(inY);
 
-        if (inX > 1 && inY < 7 && checkBoard[inX-1,inY+1] == null)
+        if (inX > 0 && inY < 7 && checkBoard[inX-1,inY+1] == null)
         {
             testCheck.moveArray[0] = new Vector2(inX - 1, inY + 1);
             Debug.Log(inX - 1);
@@ -347,7 +363,7 @@ public class CheckerManager : MonoBehaviour {
         {
             testCheck.moveArray[1] = null;
         }
-        if (inX < 7 && inY > 1 && checkBoard[inX + 1, inY - 1] == null)
+        if (inX < 7 && inY > 0 && checkBoard[inX + 1, inY - 1] == null)
         {
             testCheck.moveArray[2] = new Vector2(inX + 1, inY - 1);
         }
@@ -355,7 +371,7 @@ public class CheckerManager : MonoBehaviour {
         {
             testCheck.moveArray[2] = null;
         }
-        if (inX > 1 && inY > 1 && checkBoard[inX - 1, inY - 1] == null)
+        if (inX > 0 && inY > 1 && checkBoard[inX - 1, inY - 1] == null)
         {
             testCheck.moveArray[3] = new Vector2(inX - 1, inY - 1);
         }
@@ -377,7 +393,7 @@ public class CheckerManager : MonoBehaviour {
 
         int inY = testCheck.indexY;
 
-        if (inX > 2 && inY < 6 && checkBoard[inX - 1, inY + 1] != null && checkBoard[inX -2, inY + 2] == null)
+        if (inX > 1 && inY < 6 && checkBoard[inX - 1, inY + 1] != null && checkBoard[inX -2, inY + 2] == null)
         {
             testCheck.moveArray[4] = new Vector2(inX - 2, inY + 2);
         }
@@ -393,7 +409,7 @@ public class CheckerManager : MonoBehaviour {
         {
             testCheck.moveArray[5] = null;
         }
-        if (inX > 2 && inY > 2 && checkBoard[inX - 1, inY - 1] != null && checkBoard[inX - 2, inY - 2] == null)
+        if (inX > 1 && inY > 1 && checkBoard[inX - 1, inY - 1] != null && checkBoard[inX - 2, inY - 2] == null)
         {
             testCheck.moveArray[6] = new Vector2(inX - 2, inY - 2);
         }
@@ -401,7 +417,7 @@ public class CheckerManager : MonoBehaviour {
         {
             testCheck.moveArray[6] = null;
         }
-        if (inX < 6 && inY > 2 && checkBoard[inX + 1, inY - 1] != null && checkBoard[inX + 2, inY - 2] == null)
+        if (inX < 6 && inY > 1 && checkBoard[inX + 1, inY - 1] != null && checkBoard[inX + 2, inY - 2] == null)
         {
             testCheck.moveArray[7] = new Vector2(inX + 2, inY - 2);
         }
@@ -417,6 +433,15 @@ public class CheckerManager : MonoBehaviour {
     /// <param name="data"></param>
     public void MoveChecker(GameObject picked)
     {
+
+        if(hasMoved == false)
+        {
+            selected = picked;
+        }
+        else
+        {
+            return;
+        }
       
         Checker info = picked.GetComponent<Checker>();
 
@@ -431,6 +456,32 @@ public class CheckerManager : MonoBehaviour {
                 indicBoard[(int)info.moveArray[i].GetValueOrDefault().x, (int)info.moveArray[i].GetValueOrDefault().y].SetActive(true);
             }
         }
+    }
+
+    /// <summary>
+    /// Shows whethe a checker can jump after jumping
+    /// </summary>
+    /// <param name="picked"></param>
+    public void PostMove(GameObject picked)
+    {
+        Checker info = picked.GetComponent<Checker>();
+
+        for (int i = 0; i < 8; i++)
+        {
+            if (info.moveArray[i] != null)
+            {
+                indicBoard[(int)info.moveArray[i].GetValueOrDefault().x, (int)info.moveArray[i].GetValueOrDefault().y].SetActive(false);
+            }
+        }
+        IsJumpLegal(picked);
+        for (int i = 4; i < 8; i++)
+        {
+            if (info.moveArray[i] != null)
+            {
+                indicBoard[(int)info.moveArray[i].GetValueOrDefault().x, (int)info.moveArray[i].GetValueOrDefault().y].SetActive(true);
+            }
+        }
+
     }
 
 

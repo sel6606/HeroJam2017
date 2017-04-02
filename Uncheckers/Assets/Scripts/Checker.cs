@@ -44,7 +44,7 @@ public class Checker : MonoBehaviour
     public Vector3 PositionChecker
     {
 
-        get { return gameObject.transform.position; }
+        get { return positionChecker; }
 
         set { positionChecker = value; }
 
@@ -147,6 +147,8 @@ public class Checker : MonoBehaviour
         this.PositionChecker = newPosition;
 
         this.gameObject.transform.position = this.PositionChecker;
+
+
 
         //updates the checker position int the array
         checkerManager.GetComponent<CheckerManager>().EditArray(this.indexX, this.indexY, newX, newY);
