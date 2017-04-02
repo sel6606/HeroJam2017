@@ -348,6 +348,9 @@ public class CheckerManager : MonoBehaviour {
     /// </summary>
     public void IsMoveLegal(GameObject check)
     {
+
+        movePos = false;
+
         Checker testCheck = check.GetComponent<Checker>();
 
         int inX = testCheck.indexX;
@@ -360,8 +363,11 @@ public class CheckerManager : MonoBehaviour {
 
         if (inX > 0 && inY < 7 && checkBoard[inX-1,inY+1] == null)
         {
+
             testCheck.moveArray[0] = new Vector2(inX - 1, inY + 1);
-            
+
+            movePos = true;
+
         }
         else
         {
@@ -370,7 +376,11 @@ public class CheckerManager : MonoBehaviour {
 
         if(inX < 7 && inY < 7 && checkBoard[inX + 1, inY + 1] == null)
         {
+
             testCheck.moveArray[1] = new Vector2(inX + 1, inY + 1);
+
+            movePos = true;
+
         }
         else
         {
@@ -380,6 +390,9 @@ public class CheckerManager : MonoBehaviour {
         {
            
             testCheck.moveArray[2] = new Vector2(inX + 1, inY - 1);
+
+            movePos = true;
+
         }
         else
         {
@@ -387,7 +400,11 @@ public class CheckerManager : MonoBehaviour {
         }
         if (inX > 0 && inY > 1 && checkBoard[inX - 1, inY - 1] == null)
         {
+
             testCheck.moveArray[3] = new Vector2(inX - 1, inY - 1);
+
+            movePos = true;
+
         }
         else
         {
@@ -403,15 +420,22 @@ public class CheckerManager : MonoBehaviour {
     /// <param name="check"></param>
     public void IsJumpLegal(GameObject check)
     {
+
+        jumpPos = false;
+
         Checker testCheck = check.GetComponent<Checker>();
 
         int inX = testCheck.indexX;
 
-        int inY = testCheck.indexY;
+        int inY = testCheck.indexY;        
 
         if (inX > 1 && inY < 6 && checkBoard[inX - 1, inY + 1] != null && checkBoard[inX -2, inY + 2] == null)
         {
+
             testCheck.moveArray[5] = new Vector2(inX - 2, inY + 2);
+
+            jumpPos = true;
+
         }
         else
         {
@@ -421,6 +445,9 @@ public class CheckerManager : MonoBehaviour {
         {
            
             testCheck.moveArray[4] = new Vector2(inX - 2, inY + 2);
+
+            jumpPos = true;
+
         }
         else
         {
@@ -428,7 +455,11 @@ public class CheckerManager : MonoBehaviour {
         }
         if (inX < 6 && inY < 6 && checkBoard[inX + 1, inY + 1] != null && checkBoard[inX + 2, inY + 2] == null)
         {
+
             testCheck.moveArray[5] = new Vector2(inX + 2, inY + 2);
+
+            jumpPos = true;
+
         }
         else
         {
@@ -436,7 +467,10 @@ public class CheckerManager : MonoBehaviour {
         }
         if (inX > 1 && inY > 1 && checkBoard[inX - 1, inY - 1] != null && checkBoard[inX - 2, inY - 2] == null)
         {
+
             testCheck.moveArray[6] = new Vector2(inX - 2, inY - 2);
+
+            jumpPos = true;
 
         }
         else
@@ -449,6 +483,9 @@ public class CheckerManager : MonoBehaviour {
         {
 
             testCheck.moveArray[7] = new Vector2(inX + 2, inY - 2);
+
+            jumpPos = true;
+
         }
         else
         {
@@ -507,6 +544,8 @@ public class CheckerManager : MonoBehaviour {
     {
         Checker info = picked.GetComponent<Checker>();
 
+        movePos = false;
+
         for (int i = 0; i < 8; i++)
         {
             if (info.moveArray[i] != null)
@@ -528,6 +567,8 @@ public class CheckerManager : MonoBehaviour {
     public void Deselect(GameObject picked)
     {
         Checker info = picked.GetComponent<Checker>();
+
+        movePos = false;
 
         for (int i = 0; i < 8; i++)
         {
