@@ -22,6 +22,8 @@ public class CheckerManager : MonoBehaviour {
 
     public GameObject lastSelected;
 
+    public GameObject gameMan;
+
     public bool hasMoved;
 
 
@@ -39,11 +41,6 @@ public class CheckerManager : MonoBehaviour {
 
     //position for lowes left corner
     public GameObject basePos;
-
-	//gameobjects for swapping out objects for animation
-	public GameObject checkerS;
-	public GameObject checkerJ;
-	public GameObject checkerF;
 
     //float for offset
     float offset;
@@ -336,12 +333,6 @@ public class CheckerManager : MonoBehaviour {
 
                 clickBox.GetComponent<lightClickMoveScript>().checkerMan = gameObject;
 
-				clickBox.GetComponent<lightClickMoveScript> ().flipChecker = checkerF;
-
-				clickBox.GetComponent<lightClickMoveScript> ().slideChecker = checkerS;
-
-				clickBox.GetComponent<lightClickMoveScript> ().jumpChecker = checkerJ;
-
                 clickBox.GetComponent<lightClickMoveScript>().inX = j;
 
                 clickBox.GetComponent<lightClickMoveScript>().inY = i;
@@ -473,6 +464,10 @@ public class CheckerManager : MonoBehaviour {
     /// <param name="data"></param>
     public void MoveChecker(GameObject picked)
     {
+        if(gameMan.GetComponent<GameManager>().PlayerTurn != (int)picked.GetComponent<Checker>().CheckerColor && picked.GetComponent<Checker>().Flipped)
+        {
+            return;
+        }
         if(lastSelected != null)
         {
             Checker lastInfo = lastSelected.GetComponent<Checker>();

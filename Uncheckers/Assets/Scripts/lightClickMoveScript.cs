@@ -24,8 +24,6 @@ public class lightClickMoveScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		hasAnimated = false;
-
-		baseChecker = (GameObject) Instantiate (slideChecker, Vector3.zero, Quaternion.identity);
 	}
 	
 	// Update is called once per frame

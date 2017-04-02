@@ -367,6 +367,11 @@ Prefab:
       propertyPath: checkerF
       value: 
       objectReference: {fileID: 691284502}
+    - target: {fileID: 114331731934731312, guid: 27f87b1de894c1a45b9cc0bea960d019,
+        type: 2}
+      propertyPath: gameMan
+      value: 
+      objectReference: {fileID: 251104185}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 27f87b1de894c1a45b9cc0bea960d019, type: 2}
   m_IsPrefabParent: 0

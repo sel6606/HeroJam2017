@@ -1390,7 +1390,7 @@ MonoBehaviour:
   hasMoved: 0
   redLeft: 12
   blackLeft: 12
-  checkPre: {fileID: 1724180215881450, guid: d8492b3f56c6ed444ac6d34797c4aa85, type: 2}
+  checkPre: {fileID: 1056713733421384, guid: e3f06d87ef10a6544b3157b986d67df6, type: 2}
   colChecker: {fileID: 1236480396082942, guid: 3d2ddaaea9ca7a242a6633e319cf055d, type: 2}
   basePos: {fileID: 232784934}
 --- !u!4 &1679107594
