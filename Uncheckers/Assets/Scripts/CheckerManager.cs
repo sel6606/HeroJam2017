@@ -8,6 +8,11 @@ public class CheckerManager : MonoBehaviour {
     //2D array of checker locations
     public GameObject[,] checkBoard = new GameObject[8, 8];
 
+    //bools if move or jump is possible
+
+    public bool movePos;
+    public bool jumpPos;
+
     //The number of red checkers left
     public int redLeft;
 
@@ -75,6 +80,9 @@ public class CheckerManager : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// Resets the array to be void
+    /// </summary>
     public void Restart()
     {
 
@@ -277,20 +285,43 @@ public class CheckerManager : MonoBehaviour {
 
         if(inX > 1 && inY < 7 && checkBoard[inX-1,inY+1] == null)
         {
+
             testCheck.moveUpL = true;
+
+            movePos = true;
+
         }
         if (inX < 7 && inY < 7 && checkBoard[inX + 1, inY + 1] == null)
         {
+
             testCheck.moveUpR = true;
+
+            movePos = true;
+
         }
         if (inX < 7 && inY > 1 && checkBoard[inX + 1, inY - 1] == null)
         {
-            testCheck.moveDnr = true;
+
+            testCheck.moveDnR = true;
+
+            movePos = true;
+
         }
         if (inX > 1 && inY > 1 && checkBoard[inX - 1, inY - 1] == null)
         {
+
             testCheck.moveDnL = true;
+
+            movePos = true;
+
         }
+        if(testCheck.moveUpL == false && testCheck.moveUpR == false && testCheck.moveDnL == false && testCheck.moveDnR == false)
+        {
+
+            movePos = false;
+
+        }
+
     }
 
     /// <summary>
@@ -308,18 +339,32 @@ public class CheckerManager : MonoBehaviour {
         if (inX > 2 && inY < 6 && checkBoard[inX - 1, inY + 1] != null && checkBoard[inX -2, inY + 2] == null)
         {
             testCheck.jumpUpL = true;
+
+            jumpPos = true;
         }
         if (inX < 6 && inY < 6 && checkBoard[inX + 1, inY + 1] != null && checkBoard[inX + 2, inY + 2] == null)
         {
             testCheck.jumpUpR = true;
+
+            jumpPos = true;
         }
         if (inX > 2 && inY > 2 && checkBoard[inX - 1, inY - 1] != null && checkBoard[inX - 2, inY - 2] == null)
         {
             testCheck.jumpDnL = true;
+
+            jumpPos = true;
         }
         if (inX < 6 && inY > 2 && checkBoard[inX + 1, inY - 1] != null && checkBoard[inX + 2, inY - 2] == null)
         {
-            testCheck.jumpDnr = true;
+            testCheck.jumpDnR = true;
+
+            jumpPos = true;
+        }
+        if(testCheck.jumpUpL != true && testCheck.jumpUpR != true && testCheck.jumpDnL != true && testCheck.jumpDnR != true)
+        {
+
+            jumpPos = false;
+
         }
     }
 

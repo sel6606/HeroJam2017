@@ -19,12 +19,12 @@ public class Checker : MonoBehaviour
     public bool moveUpL;
     public bool moveUpR;
     public bool moveDnL;
-    public bool moveDnr;
+    public bool moveDnR;
 
     public bool jumpUpL;
     public bool jumpUpR;
     public bool jumpDnL;
-    public bool jumpDnr;
+    public bool jumpDnR;
     #endregion
 
     //move bools
