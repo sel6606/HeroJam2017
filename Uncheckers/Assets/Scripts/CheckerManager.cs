@@ -133,7 +133,7 @@ public class CheckerManager : MonoBehaviour {
     public void InitArray()
     {
         //Float for how far they need to move
-        offset = checkPre.GetComponent<Renderer>().bounds.size.x + (checkPre.GetComponent<Renderer>().bounds.extents.x / 3);
+        offset = checkPre.GetComponentInChildren<Renderer>().bounds.size.x + (checkPre.GetComponent<Renderer>().bounds.extents.x / 3);
 
         int redNum = 12;
 

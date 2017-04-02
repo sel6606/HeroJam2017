@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114269918534231530}
   - component: {fileID: 114810721187633376}
   - component: {fileID: 136411946218794174}
+  - component: {fileID: 111620018597274676}
   m_Layer: 0
   m_Name: Neutral Checker
   m_TagString: Untagged
@@ -100,6 +101,23 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!111 &111620018597274676
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1724180215881450}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: da2228c0494c6404289cc2904fbba4ae, type: 3}
+  - {fileID: 7400000, guid: b4f2cc246c3e74a46afd224f687810e3, type: 3}
+  - {fileID: 7400000, guid: b34356cfc4f4d574686f292420f5dc68, type: 3}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &114269918534231530
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80c5a8db74877804d819d3e0b8362c51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animate: {fileID: 0}
   selected: 0
   moveUpL: {x: 0, y: 0}
   moveUpR: {x: 0, y: 0}

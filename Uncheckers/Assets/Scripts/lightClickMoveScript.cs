@@ -11,6 +11,9 @@ public class lightClickMoveScript : MonoBehaviour {
     public int inY;
 
 	public bool hasAnimated;
+	public bool hasClicked;
+
+	public CheckerManager checkScri;
 
 	// Use this for initialization
 	void Start () {
@@ -19,17 +22,8 @@ public class lightClickMoveScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
 
-
-    void OnMouseDown()
-    {
-        Debug.Log("Light clicked");
-
-        CheckerManager checkScri = checkerMan.GetComponent<CheckerManager>(); 
-
-		if (!checkScri.selected.GetComponent<Checker> ().animate.isPlaying) 
+		if (checkScri != null && !checkScri.selected.GetComponent<Checker> ().animate.isPlaying && hasClicked == true) 
 		{
 			if(Mathf.Abs((float)(checkScri.selected.GetComponent<Checker>().indexX - inX)) == 1)
 			{
@@ -41,10 +35,12 @@ public class lightClickMoveScript : MonoBehaviour {
 				else 
 				{
 					checkScri.selected.GetComponent<Checker>().Move(inX, inY, gameObject.transform.position);
-
+			
 					checkScri.Deselect(checkScri.selected);
-
+			
 					hasAnimated = false;
+
+					hasClicked = false;
 				}
 			}
 			else
@@ -57,12 +53,63 @@ public class lightClickMoveScript : MonoBehaviour {
 				else
 				{
 					checkScri.selected.GetComponent<Checker>().Jump(inX, inY, gameObject.transform.position);
-
+			
 					checkScri.PostMove(checkScri.selected);
-
+			
 					hasAnimated = false;
+
+					hasClicked = false;
 				}
-			}	
+			}
 		}
+	}
+
+
+    void OnMouseDown()
+    {
+        Debug.Log("Light clicked");
+
+        checkScri = checkerMan.GetComponent<CheckerManager>(); 
+
+		if (hasClicked != true) 
+		{
+			hasClicked = true;
+		}
+
+		//if (!checkScri.selected.GetComponent<Checker> ().animate.isPlaying) 
+		//{
+		//	if(Mathf.Abs((float)(checkScri.selected.GetComponent<Checker>().indexX - inX)) == 1)
+		//	{
+		//		if (hasAnimated == false) 
+		//		{
+		//			checkScri.selected.GetComponent<Checker> ().AnimateChecker ("Slide");
+		//			hasAnimated = true;
+		//		} 
+		//		else 
+		//		{
+		//			checkScri.selected.GetComponent<Checker>().Move(inX, inY, gameObject.transform.position);
+		//
+		//			checkScri.Deselect(checkScri.selected);
+		//
+		//			hasAnimated = false;
+		//		}
+		//	}
+		//	else
+		//	{
+		//		if (hasAnimated == false) 
+		//		{
+		//			checkScri.selected.GetComponent<Checker> ().AnimateChecker ("Jump");
+		//			hasAnimated = true;
+		//		} 
+		//		else
+		//		{
+		//			checkScri.selected.GetComponent<Checker>().Jump(inX, inY, gameObject.transform.position);
+		//
+		//			checkScri.PostMove(checkScri.selected);
+		//
+		//			hasAnimated = false;
+		//		}
+		//	}	
+		//}
     }
 }
