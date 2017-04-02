@@ -14,6 +14,8 @@ public class CheckerManager : MonoBehaviour {
     //The checker chosen to move, can only be changed if hasMoved is false
     public GameObject selected;
 
+    public GameObject lastSelected;
+
     public bool hasMoved;
 
     //The number of red checkers left
@@ -433,7 +435,19 @@ public class CheckerManager : MonoBehaviour {
     /// <param name="data"></param>
     public void MoveChecker(GameObject picked)
     {
+        if(lastSelected != null)
+        {
+            Checker lastInfo = lastSelected.GetComponent<Checker>();
 
+            for (int i = 0; i < 8; i++)
+            {
+                if (lastInfo.moveArray[i] != null)
+                {
+                    indicBoard[(int)lastInfo.moveArray[i].GetValueOrDefault().x, (int)lastInfo.moveArray[i].GetValueOrDefault().y].SetActive(false);
+                }
+            }
+        }
+        lastSelected = picked;
         if(hasMoved == false)
         {
             selected = picked;
