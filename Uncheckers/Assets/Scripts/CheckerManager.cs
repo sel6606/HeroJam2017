@@ -9,8 +9,8 @@ public class CheckerManager : MonoBehaviour {
     public GameObject[,] checkBoard = new GameObject[8, 8];
 
     //textures to be added to checkers when they show their true colors
-    public Texture redTex;
-    public Texture blackTex;
+    public Material redTex;
+    public Material blackTex;
 
 
     //bools if move or jump is possible
@@ -553,13 +553,15 @@ public class CheckerManager : MonoBehaviour {
 
         info.Flipped = true;
 
+        Debug.Log("Color change");
+
         if(info.CheckerColor == cColor.Black)
         {
-            picked.GetComponentInChildren<Material>().SetTexture(Shader.PropertyToID("checker texture black"), blackTex);
+            picked.transform.GetChild(1).GetComponentInChildren<Renderer>().material = blackTex;
         }
         if (info.CheckerColor == cColor.Red)
         {
-            picked.GetComponentInChildren<Material>().SetTexture(Shader.PropertyToID("checker texture red"), redTex);
+            picked.transform.GetChild(1).GetComponentInChildren<Renderer>().material = redTex;
         }
     }
 

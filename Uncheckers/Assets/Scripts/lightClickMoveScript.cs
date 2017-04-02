@@ -95,16 +95,12 @@ public class lightClickMoveScript : MonoBehaviour {
 						{
 							checkScri.selected.GetComponent<Checker> ().animate.Play("Flip");
 							hasAnimated = true;
-						} 
-						else
-						{
-                            Debug.Log("Flipped");
-
-							checkScri.selected.GetComponent<Checker>().Jump(inX, inY, gameObject.transform.position);
+						
+						
 
                             checkScri.changeNow(checkScri.selected);
 
-							checkScri.selected.transform.GetChild(0).transform.position = checkScri.selected.GetComponent<CapsuleCollider> ().bounds.center;
+						
 
 							hasAnimated = false;
 

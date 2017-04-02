@@ -1382,8 +1382,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a98a15d961a444397505cd1199225f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  redTex: {fileID: 0}
-  blackTex: {fileID: 0}
+  redTex: {fileID: 2100000, guid: 1b7ec5f626525c848bd5a827c4a1733a, type: 2}
+  blackTex: {fileID: 2100000, guid: e7d05175cdefd31409434cabe63f9657, type: 2}
   movePos: 0
   jumpPos: 0
   selected: {fileID: 0}
