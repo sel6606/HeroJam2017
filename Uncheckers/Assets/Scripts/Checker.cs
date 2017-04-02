@@ -11,27 +11,27 @@ public class Checker : MonoBehaviour
     //Whether or not it is flipped
     //Index in the 2D array
 
-	//Variable for animation
-	private Animation animate;
-
     //move and jump bools that check previous move
 
     public bool selected;
 
     #region
-    public bool moveUpL;
-    public bool moveUpR;
-    public bool moveDnL;
-    public bool moveDnr;
+    public Vector2 moveUpL;
+    public Vector2 moveUpR;
+    public Vector2 moveDnL;
+    public Vector2 moveDnr;
 
-    public bool jumpUpL;
-    public bool jumpUpR;
-    public bool jumpDnL;
-    public bool jumpDnr;
+    public Vector2 jumpUpL;
+    public Vector2 jumpUpR;
+    public Vector2 jumpDnL;
+    public Vector2 jumpDnr;
+
+    public Vector2?[] moveArray = new Vector2?[8];
     #endregion
 
     //move bools
     #region
+
     public bool prevMoveMove;
     public bool moveOver;
     #endregion
@@ -45,7 +45,7 @@ public class Checker : MonoBehaviour
     public Vector3 PositionChecker
     {
 
-        get { return gameObject.transform.position; }
+        get { return positionChecker; }
 
         set { positionChecker = value; }
 
@@ -115,7 +115,6 @@ public class Checker : MonoBehaviour
     {
 
         //checkerManager.GetComponent<CheckerManager>();
-		animate = gameObject.GetComponent<Animation>();
 
     }
 
@@ -137,14 +136,9 @@ public class Checker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (Input.GetKeyDown(KeyCode.C))
-		{
-			AnimateChecker ("Flip");
-		}
-		if (!animate.isPlaying)
-		{
-			Debug.Log ("Not Playing");
-		}
+
+
+
     }
 
     public void Move(int newX, int newY, Vector3 newPosition)
@@ -154,6 +148,8 @@ public class Checker : MonoBehaviour
         this.PositionChecker = newPosition;
 
         this.gameObject.transform.position = this.PositionChecker;
+
+
 
         //updates the checker position int the array
         checkerManager.GetComponent<CheckerManager>().EditArray(this.indexX, this.indexY, newX, newY);
@@ -167,8 +163,6 @@ public class Checker : MonoBehaviour
 
     public void MoveOne(int newX, int newY, Vector3 newPosition)
     {
-		//Play move animation
-		AnimateChecker("Slide");
 
         Move(newX, newY, newPosition); //calls move
 
@@ -193,9 +187,11 @@ public class Checker : MonoBehaviour
 
     }
 
-	private void AnimateChecker(string animationName)
-	{
-		animate.Play (animationName);
-	}
+    void OnMouseDown()
+    {
+        Debug.Log("clicked " + gameObject.name);
+
+        checkerManager.GetComponent<CheckerManager>().MoveChecker(gameObject);
+    }
 
 }

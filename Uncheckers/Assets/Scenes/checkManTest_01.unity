@@ -130,6 +130,22 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4733683351874708, guid: 6ee64e2679177f74ab68023ecfb21131, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733683351874708, guid: 6ee64e2679177f74ab68023ecfb21131, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733683351874708, guid: 6ee64e2679177f74ab68023ecfb21131, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733683351874708, guid: 6ee64e2679177f74ab68023ecfb21131, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ee64e2679177f74ab68023ecfb21131, type: 2}
   m_IsPrefabParent: 0
@@ -162,8 +178,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   redLeft: 0
   blackLeft: 0
-  checkPre: {fileID: 1411234964128078, guid: dc3a64193bf26164490f8cd9bd470280, type: 2}
-  basePos: {x: -0.92, y: 7.542, z: 4.08}
+  checkPre: {fileID: 1724180215881450, guid: d8492b3f56c6ed444ac6d34797c4aa85, type: 2}
+  colChecker: {fileID: 1236480396082942, guid: 3d2ddaaea9ca7a242a6633e319cf055d, type: 2}
+  basePos: {fileID: 1854692971}
 --- !u!4 &1738921664
 Transform:
   m_ObjectHideFlags: 0
@@ -335,6 +352,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1854692972}
+  - component: {fileID: 1854692973}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -349,9 +367,40 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1854692971}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.21, y: 7.364, z: 4.08}
+  m_LocalPosition: {x: -0.0664, y: 0, z: -0.0682}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1854692973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1854692971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1411234964128078, guid: dc3a64193bf26164490f8cd9bd470280,
+            type: 2}
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
