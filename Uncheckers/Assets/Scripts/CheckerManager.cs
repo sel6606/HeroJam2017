@@ -40,6 +40,11 @@ public class CheckerManager : MonoBehaviour {
     //position for lowes left corner
     public GameObject basePos;
 
+	//gameobjects for swapping out objects for animation
+	public GameObject checkerS;
+	public GameObject checkerJ;
+	public GameObject checkerF;
+
     //float for offset
     float offset;
 
@@ -143,7 +148,7 @@ public class CheckerManager : MonoBehaviour {
     public void InitArray()
     {
         //Float for how far they need to move
-        offset = checkPre.GetComponentInChildren<Renderer>().bounds.size.x + (checkPre.GetComponent<Renderer>().bounds.extents.x / 3);
+		offset = checkPre.transform.GetChild(1).GetComponent<Renderer>().bounds.size.x + (checkPre.transform.GetChild(1).GetComponent<Renderer>().bounds.extents.x / 3);
 
         int redNum = 12;
 
@@ -331,6 +336,12 @@ public class CheckerManager : MonoBehaviour {
 
                 clickBox.GetComponent<lightClickMoveScript>().checkerMan = gameObject;
 
+				clickBox.GetComponent<lightClickMoveScript> ().flipChecker = checkerF;
+
+				clickBox.GetComponent<lightClickMoveScript> ().slideChecker = checkerS;
+
+				clickBox.GetComponent<lightClickMoveScript> ().jumpChecker = checkerJ;
+
                 clickBox.GetComponent<lightClickMoveScript>().inX = j;
 
                 clickBox.GetComponent<lightClickMoveScript>().inY = i;
@@ -385,7 +396,7 @@ public class CheckerManager : MonoBehaviour {
         {
             testCheck.moveArray[2] = null;
         }
-        if (inX > 0 && inY > 1 && checkBoard[inX - 1, inY - 1] == null)
+        if (inX > 0 && inY > 0 && checkBoard[inX - 1, inY - 1] == null)
         {
             testCheck.moveArray[3] = new Vector2(inX - 1, inY - 1);
         }

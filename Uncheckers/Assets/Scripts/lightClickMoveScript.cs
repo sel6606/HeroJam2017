@@ -15,9 +15,17 @@ public class lightClickMoveScript : MonoBehaviour {
 
 	public CheckerManager checkScri;
 
+	public GameObject flipChecker;
+	public GameObject slideChecker;
+	public GameObject jumpChecker;
+
+	public GameObject baseChecker;
+
 	// Use this for initialization
 	void Start () {
 		hasAnimated = false;
+
+		baseChecker = (GameObject) Instantiate (slideChecker, Vector3.zero, Quaternion.identity);
 	}
 	
 	// Update is called once per frame
@@ -29,14 +37,28 @@ public class lightClickMoveScript : MonoBehaviour {
 			{
 				if (hasAnimated == false) 
 				{
-					checkScri.selected.GetComponent<Checker> ().AnimateChecker ("Slide");
+					//Instantiate (slideChecker, checkScri.selected.transform.position, checkScri.selected.transform.rotation);
+					checkScri.selected.GetComponent<Checker> ().animate.Play("Slide");
+					//checkScri.selected.GetComponent<MeshRenderer>().enabled = false;
 					hasAnimated = true;
+
+					Debug.Log ("Start Animation");
+					Debug.Log(checkScri.selected.GetComponent<Checker> ().animate.isPlaying);
 				} 
 				else 
 				{
+					Debug.Log ("End Animation");
+
+					//checkScri.selected.GetComponent<Checker>().animate.Rewind("Slide");
 					checkScri.selected.GetComponent<Checker>().Move(inX, inY, gameObject.transform.position);
 			
 					checkScri.Deselect(checkScri.selected);
+
+					checkScri.selected.transform.GetChild(0).transform.position = checkScri.selected.GetComponent<CapsuleCollider> ().bounds.center;
+
+					//checkScri.selected.GetComponent<Checker> ().animate.Rewind();
+
+					//checkScri.selected.GetComponent<MeshRenderer>().enabled = true;
 			
 					hasAnimated = false;
 
@@ -47,7 +69,7 @@ public class lightClickMoveScript : MonoBehaviour {
 			{
 				if (hasAnimated == false) 
 				{
-					checkScri.selected.GetComponent<Checker> ().AnimateChecker ("Jump");
+					checkScri.selected.GetComponent<Checker> ().animate.Play("Jump");
 					hasAnimated = true;
 				} 
 				else
