@@ -27,8 +27,18 @@ public class lightClickMoveScript : MonoBehaviour {
 
         CheckerManager checkScri = checkerMan.GetComponent<CheckerManager>();
 
-        checkScri.selected.GetComponent<Checker>().Move(inX, inY, gameObject.transform.position);
+        if(Mathf.Abs((float)(checkScri.selected.GetComponent<Checker>().indexX - inX)) == 1)
+        {
+            checkScri.selected.GetComponent<Checker>().Move(inX, inY, gameObject.transform.position);
 
-        checkScri.PostMove(checkScri.selected);
+            checkScri.Deselect(checkScri.selected);
+        }
+        else
+        {
+            checkScri.selected.GetComponent<Checker>().Jump(inX, inY, gameObject.transform.position);
+
+            checkScri.PostMove(checkScri.selected);
+        }
+
     }
 }

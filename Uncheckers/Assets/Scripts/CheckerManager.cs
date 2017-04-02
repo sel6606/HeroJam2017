@@ -484,5 +484,18 @@ public class CheckerManager : MonoBehaviour {
 
     }
 
+    public void Deselect(GameObject picked)
+    {
+        Checker info = picked.GetComponent<Checker>();
+
+        for (int i = 0; i < 8; i++)
+        {
+            if (info.moveArray[i] != null)
+            {
+                indicBoard[(int)info.moveArray[i].GetValueOrDefault().x, (int)info.moveArray[i].GetValueOrDefault().y].SetActive(false);
+            }
+        }
+    }
+
 
 }
