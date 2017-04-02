@@ -14,7 +14,7 @@ public class Animate : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.C)) 
 		{
-			gameObject.GetComponent<Animation> ().Play ("Flip");
+			gameObject.GetComponent<Animation> ().Play("Flip");
 		}
 	}
 }

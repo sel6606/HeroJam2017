@@ -23,18 +23,19 @@ public class lightClickMoveScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (checkScri != null && !checkScri.selected.GetComponent<Checker> ().animate.isPlaying && hasClicked == true) 
+		if (checkScri != null && !checkScri.selected.GetComponent<Checker>().animate.isPlaying && hasClicked == true) 
 		{
 			if(Mathf.Abs((float)(checkScri.selected.GetComponent<Checker>().indexX - inX)) == 1)
 			{
 				if (hasAnimated == false) 
 				{
-					checkScri.selected.GetComponent<Checker> ().AnimateChecker ("Slide");
-					hasAnimated = true;
+                    checkScri.selected.GetComponent<Checker>().animate.Play("Slide");
+
+                    hasAnimated = true;
 				} 
 				else 
 				{
-					checkScri.selected.GetComponent<Checker>().Move(inX, inY, gameObject.transform.position);
+					checkScri.selected.GetComponent<Checker>().MoveOne(inX, inY, gameObject.transform.position);
 			
 					checkScri.Deselect(checkScri.selected);
 			
@@ -47,7 +48,7 @@ public class lightClickMoveScript : MonoBehaviour {
 			{
 				if (hasAnimated == false) 
 				{
-					checkScri.selected.GetComponent<Checker> ().AnimateChecker ("Jump");
+                    checkScri.selected.GetComponent<Checker>().animate.Play("Jump");
 					hasAnimated = true;
 				} 
 				else

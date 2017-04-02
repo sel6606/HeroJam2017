@@ -21,9 +21,7 @@ GameObject:
   - component: {fileID: 4538340133883088}
   - component: {fileID: 33535639548818084}
   - component: {fileID: 23105721849269292}
-  - component: {fileID: 95916714979433124}
   - component: {fileID: 114269918534231530}
-  - component: {fileID: 114810721187633376}
   - component: {fileID: 136411946218794174}
   - component: {fileID: 111620018597274676}
   m_Layer: 0
@@ -84,23 +82,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1724180215881450}
   m_Mesh: {fileID: 4300000, guid: 47bf2027b92178c4db59e34b4877e3bb, type: 3}
---- !u!95 &95916714979433124
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1724180215881450}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 47bf2027b92178c4db59e34b4877e3bb, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!111 &111620018597274676
 Animation:
   m_ObjectHideFlags: 1
@@ -142,36 +123,6 @@ MonoBehaviour:
   prevMoveMove: 0
   moveOver: 0
   checkerManager: {fileID: 0}
---- !u!114 &114810721187633376
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1724180215881450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: 
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!136 &136411946218794174
 CapsuleCollider:
   m_ObjectHideFlags: 1
