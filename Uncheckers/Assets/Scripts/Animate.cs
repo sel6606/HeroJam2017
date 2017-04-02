@@ -11,6 +11,10 @@ public class Animate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
+		if (Input.GetKeyDown (KeyCode.C)) 
+		{
+			gameObject.GetComponent<Animation> ().Play ("Flip");
+		}
 	}
 }
